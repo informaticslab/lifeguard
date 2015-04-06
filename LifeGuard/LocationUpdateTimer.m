@@ -31,6 +31,8 @@
     
 }
 
+
+
 - (void)startTimer {
     if (!timer) {
         timer = [NSTimer scheduledTimerWithTimeInterval:SECONDS_BETWEEN_UPDATES

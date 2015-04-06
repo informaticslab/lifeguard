@@ -13,4 +13,10 @@
 
 @property (strong, nonatomic) LocationUpdateTimer *locUpdateTimer;
 
+- (IBAction)btnShowDeviceIdTouchUp:(id)sender;
+- (IBAction)btnEmailDeviceIdTouchUp:(id)sender;
+- (IBAction)btnCallEocTouchUp:(id)sender;
+- (IBAction)btnSendLocationNowTouchUp:(id)sender;
+- (IBAction)btnAboutUsTouchUp:(id)sender;
+
 @end

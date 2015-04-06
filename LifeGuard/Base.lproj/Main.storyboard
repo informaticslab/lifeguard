@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Locator View Controller-->
@@ -15,7 +16,101 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuM-OK-uf9">
+                                <rect key="frame" x="16" y="110" width="568" height="105"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">This app reports your location to IT on a periodic basis. To disable this app's ability to report your location, go to Settings -&gt; Privacy -&gt; Location Services and select the Lifeguard app and select Never under the Allow Location Access settings. </string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-uV-Lho">
+                                <rect key="frame" x="181" y="463" width="238" height="30"/>
+                                <state key="normal" title="About Us">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAboutUsTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ih7-iX-DGD"/>
+                                    <action selector="btnCallEocTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="42O-J8-eh6"/>
+                                    <action selector="btnSendLocationNowTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="70F-te-3lT"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhS-oC-ZUf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="CDC Lifeguard" id="pb2-YP-QOs"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="704-AJ-nkP">
+                                <rect key="frame" x="181" y="233" width="238" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="Xx9-Oz-jQx"/>
+                                </constraints>
+                                <state key="normal" title="Show Device ID"/>
+                                <connections>
+                                    <action selector="btnShowDeviceIdTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YxG-kS-3t2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGn-3C-BhJ">
+                                <rect key="frame" x="181" y="288" width="238" height="30"/>
+                                <state key="normal" title="Email Device ID">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnEmailDeviceIdTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="R28-7F-CDd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYX-fR-eeF">
+                                <rect key="frame" x="181" y="348" width="238" height="30"/>
+                                <state key="normal" title="Call EOC">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnCallEocTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hcA-hS-P9m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI3-Tv-t9O">
+                                <rect key="frame" x="181" y="408" width="238" height="30"/>
+                                <state key="normal" title="Send Location Now">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnCallEocTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="n7d-Pc-ODY"/>
+                                    <action selector="btnSendLocationNowTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0Xd-cI-lEo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="top" secondItem="DhS-oC-ZUf" secondAttribute="bottom" constant="46" id="2oD-bH-vU4"/>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="55l-wn-jwK"/>
+                            <constraint firstAttribute="trailing" secondItem="DhS-oC-ZUf" secondAttribute="trailing" id="8D3-dy-Qvk"/>
+                            <constraint firstItem="zYX-fR-eeF" firstAttribute="trailing" secondItem="vI3-Tv-t9O" secondAttribute="trailing" id="CkL-EY-0gh"/>
+                            <constraint firstItem="704-AJ-nkP" firstAttribute="leading" secondItem="PGn-3C-BhJ" secondAttribute="leading" id="D4a-T5-yjY"/>
+                            <constraint firstItem="cjm-uV-Lho" firstAttribute="top" secondItem="vI3-Tv-t9O" secondAttribute="bottom" constant="25" id="LVW-KF-7PJ"/>
+                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="trailing" secondItem="704-AJ-nkP" secondAttribute="trailing" id="RCy-8W-D30"/>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="centerX" secondItem="704-AJ-nkP" secondAttribute="centerX" id="Sdc-j2-XNi"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="trailing" secondItem="cjm-uV-Lho" secondAttribute="trailing" id="d1A-oO-nz3"/>
+                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="eux-nu-EtD"/>
+                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="trailing" secondItem="zYX-fR-eeF" secondAttribute="trailing" id="gcB-Iv-dnk"/>
+                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="top" secondItem="704-AJ-nkP" secondAttribute="bottom" constant="25" id="gpQ-oS-jos"/>
+                            <constraint firstItem="zYX-fR-eeF" firstAttribute="leading" secondItem="PGn-3C-BhJ" secondAttribute="leading" id="gz2-gJ-gba"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cjm-uV-Lho" secondAttribute="bottom" constant="107" id="jtL-Kh-OcW"/>
+                            <constraint firstItem="zYX-fR-eeF" firstAttribute="top" secondItem="PGn-3C-BhJ" secondAttribute="bottom" constant="30" id="nFJ-h8-L6T"/>
+                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="nMb-S3-G1r"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="leading" secondItem="zYX-fR-eeF" secondAttribute="leading" id="r7p-h1-wwN"/>
+                            <constraint firstItem="cjm-uV-Lho" firstAttribute="leading" secondItem="vI3-Tv-t9O" secondAttribute="leading" id="rlN-58-isE"/>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="centerX" secondItem="DhS-oC-ZUf" secondAttribute="centerX" id="xVQ-U9-QPJ"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="top" secondItem="zYX-fR-eeF" secondAttribute="bottom" constant="30" id="yD8-Lk-I66"/>
+                            <constraint firstItem="704-AJ-nkP" firstAttribute="top" secondItem="OuM-OK-uf9" secondAttribute="bottom" constant="18" id="zOt-Sz-2gM"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
