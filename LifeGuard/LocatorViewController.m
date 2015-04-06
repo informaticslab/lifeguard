@@ -7,7 +7,6 @@
 //
 
 #import "LocatorViewController.h"
-
 @interface LocatorViewController ()
 
 @end
@@ -63,9 +62,79 @@
 
 - (IBAction)btnEmailDeviceIdTouchUp:(id)sender {
     
+    if ([MFMailComposeViewController canSendMail])
+        // The device can send email.
+    {
+        [self displayMailComposerSheet];
+    }
+
+    
+}
+
+- (void)displayMailComposerSheet
+{
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    
+    picker.mailComposeDelegate = self;
+    
+    [picker setSubject:@"Lifeguard iOS Device ID"];
+    
+    // Set up recipients
+    NSArray *toRecipients = [NSArray arrayWithObject:@"gsledbetter@gmail.com"];
+    
+    [picker setToRecipients:toRecipients];
+    NSString *bodyPreamble = @"Listed below is the device ID that will be used by the Lifeguard for iOS app for the originator of this email:";
+    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    
+    // Fill out the email body text
+    NSString *emailBody = [NSString stringWithFormat:@"%@ \n\n %@", bodyPreamble, vendorId];
+    [picker setMessageBody:emailBody isHTML:NO];
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+
+    
+}
+
+
+-(void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    self.feedbackMsg.hidden = NO;
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            self.feedbackMsg.text = @"Result: Mail sending canceled";
+            break;
+        case MFMailComposeResultSaved:
+            self.feedbackMsg.text = @"Result: Mail saved";
+            break;
+        case MFMailComposeResultSent:
+            self.feedbackMsg.text = @"Result: Mail sent";
+            break;
+        case MFMailComposeResultFailed:
+            self.feedbackMsg.text = @"Result: Mail sending failed";
+            break;
+        default:
+            self.feedbackMsg.text = @"Result: Mail not sent";
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)btnCallEocTouchUp:(id)sender {
+    
+    NSString *phoneNUmber = @"+17706825071";
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phoneNUmber]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+        [[UIApplication sharedApplication] openURL:phoneUrl];
+    } else
+    {
+        UIAlertView *calert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Call facility is not available!!!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [calert show];
+    }
     
 }
 

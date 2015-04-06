@@ -17,6 +17,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhS-oC-ZUf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="CDC Lifeguard" id="pb2-YP-QOs"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zED-r5-adC">
+                                <rect key="frame" x="16" y="519" width="568" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="Oiz-RO-wmr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-uV-Lho">
+                                <rect key="frame" x="181" y="463" width="238" height="30"/>
+                                <state key="normal" title="About Us">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAboutUsTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ih7-iX-DGD"/>
+                                    <action selector="btnCallEocTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="42O-J8-eh6"/>
+                                    <action selector="btnSendLocationNowTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="70F-te-3lT"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuM-OK-uf9">
                                 <rect key="frame" x="16" y="110" width="568" height="105"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,27 +57,10 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-uV-Lho">
-                                <rect key="frame" x="181" y="463" width="238" height="30"/>
-                                <state key="normal" title="About Us">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnAboutUsTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ih7-iX-DGD"/>
-                                    <action selector="btnCallEocTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="42O-J8-eh6"/>
-                                    <action selector="btnSendLocationNowTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="70F-te-3lT"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhS-oC-ZUf">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="CDC Lifeguard" id="pb2-YP-QOs"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="704-AJ-nkP">
                                 <rect key="frame" x="181" y="233" width="238" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="238" id="Xx9-Oz-jQx"/>
+                                    <constraint firstAttribute="width" constant="238" id="6gr-Tu-Hgn"/>
                                 </constraints>
                                 <state key="normal" title="Show Device ID"/>
                                 <connections>
@@ -89,29 +98,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OuM-OK-uf9" firstAttribute="top" secondItem="DhS-oC-ZUf" secondAttribute="bottom" constant="46" id="2oD-bH-vU4"/>
-                            <constraint firstItem="OuM-OK-uf9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="55l-wn-jwK"/>
-                            <constraint firstAttribute="trailing" secondItem="DhS-oC-ZUf" secondAttribute="trailing" id="8D3-dy-Qvk"/>
-                            <constraint firstItem="zYX-fR-eeF" firstAttribute="trailing" secondItem="vI3-Tv-t9O" secondAttribute="trailing" id="CkL-EY-0gh"/>
-                            <constraint firstItem="704-AJ-nkP" firstAttribute="leading" secondItem="PGn-3C-BhJ" secondAttribute="leading" id="D4a-T5-yjY"/>
-                            <constraint firstItem="cjm-uV-Lho" firstAttribute="top" secondItem="vI3-Tv-t9O" secondAttribute="bottom" constant="25" id="LVW-KF-7PJ"/>
-                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="trailing" secondItem="704-AJ-nkP" secondAttribute="trailing" id="RCy-8W-D30"/>
-                            <constraint firstItem="OuM-OK-uf9" firstAttribute="centerX" secondItem="704-AJ-nkP" secondAttribute="centerX" id="Sdc-j2-XNi"/>
-                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="trailing" secondItem="cjm-uV-Lho" secondAttribute="trailing" id="d1A-oO-nz3"/>
-                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="eux-nu-EtD"/>
-                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="trailing" secondItem="zYX-fR-eeF" secondAttribute="trailing" id="gcB-Iv-dnk"/>
-                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="top" secondItem="704-AJ-nkP" secondAttribute="bottom" constant="25" id="gpQ-oS-jos"/>
-                            <constraint firstItem="zYX-fR-eeF" firstAttribute="leading" secondItem="PGn-3C-BhJ" secondAttribute="leading" id="gz2-gJ-gba"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cjm-uV-Lho" secondAttribute="bottom" constant="107" id="jtL-Kh-OcW"/>
-                            <constraint firstItem="zYX-fR-eeF" firstAttribute="top" secondItem="PGn-3C-BhJ" secondAttribute="bottom" constant="30" id="nFJ-h8-L6T"/>
-                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="nMb-S3-G1r"/>
-                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="leading" secondItem="zYX-fR-eeF" secondAttribute="leading" id="r7p-h1-wwN"/>
-                            <constraint firstItem="cjm-uV-Lho" firstAttribute="leading" secondItem="vI3-Tv-t9O" secondAttribute="leading" id="rlN-58-isE"/>
-                            <constraint firstItem="OuM-OK-uf9" firstAttribute="centerX" secondItem="DhS-oC-ZUf" secondAttribute="centerX" id="xVQ-U9-QPJ"/>
-                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="top" secondItem="zYX-fR-eeF" secondAttribute="bottom" constant="30" id="yD8-Lk-I66"/>
-                            <constraint firstItem="704-AJ-nkP" firstAttribute="top" secondItem="OuM-OK-uf9" secondAttribute="bottom" constant="18" id="zOt-Sz-2gM"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="leading" secondItem="cjm-uV-Lho" secondAttribute="leading" id="0mh-Fi-aXW"/>
+                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="centerX" secondItem="OuM-OK-uf9" secondAttribute="centerX" id="8WU-Nf-sxT"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="top" secondItem="zYX-fR-eeF" secondAttribute="bottom" constant="30" id="8nm-aB-q9L"/>
+                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="leading" secondItem="zYX-fR-eeF" secondAttribute="leading" id="ACO-yi-eXa"/>
+                            <constraint firstItem="zED-r5-adC" firstAttribute="top" secondItem="cjm-uV-Lho" secondAttribute="bottom" constant="26" id="AUt-ha-uQE"/>
+                            <constraint firstItem="zYX-fR-eeF" firstAttribute="trailing" secondItem="vI3-Tv-t9O" secondAttribute="trailing" id="CAL-QJ-h2a"/>
+                            <constraint firstItem="704-AJ-nkP" firstAttribute="top" secondItem="OuM-OK-uf9" secondAttribute="bottom" constant="18" id="DhZ-OD-Tll"/>
+                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="GLz-13-den"/>
+                            <constraint firstItem="zED-r5-adC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="GU6-QO-4W1"/>
+                            <constraint firstItem="cjm-uV-Lho" firstAttribute="centerX" secondItem="zED-r5-adC" secondAttribute="centerX" id="I3a-5q-GFe"/>
+                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="trailing" secondItem="zYX-fR-eeF" secondAttribute="trailing" id="Iy4-5l-sgm"/>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="top" secondItem="DhS-oC-ZUf" secondAttribute="bottom" constant="46" id="K07-aO-rse"/>
+                            <constraint firstItem="PGn-3C-BhJ" firstAttribute="top" secondItem="704-AJ-nkP" secondAttribute="bottom" constant="25" id="Oe7-Gt-7Bv"/>
+                            <constraint firstItem="DhS-oC-ZUf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="PDu-K6-n7n"/>
+                            <constraint firstItem="cjm-uV-Lho" firstAttribute="top" secondItem="vI3-Tv-t9O" secondAttribute="bottom" constant="25" id="QJ4-XO-43m"/>
+                            <constraint firstItem="zYX-fR-eeF" firstAttribute="top" secondItem="PGn-3C-BhJ" secondAttribute="bottom" constant="30" id="TQj-9O-94Y"/>
+                            <constraint firstAttribute="trailing" secondItem="DhS-oC-ZUf" secondAttribute="trailing" id="dhy-GG-l3j"/>
+                            <constraint firstAttribute="bottom" secondItem="zED-r5-adC" secondAttribute="bottom" constant="20" symbolic="YES" id="gft-is-cYQ"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="leading" secondItem="zYX-fR-eeF" secondAttribute="leading" id="hou-Ky-NHV"/>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="trailing" secondItem="zED-r5-adC" secondAttribute="trailing" id="qO4-cR-CUe"/>
+                            <constraint firstItem="704-AJ-nkP" firstAttribute="leading" secondItem="PGn-3C-BhJ" secondAttribute="leading" id="rnA-gM-ev3"/>
+                            <constraint firstItem="vI3-Tv-t9O" firstAttribute="trailing" secondItem="cjm-uV-Lho" secondAttribute="trailing" id="sIe-Qr-3xd"/>
+                            <constraint firstItem="704-AJ-nkP" firstAttribute="trailing" secondItem="PGn-3C-BhJ" secondAttribute="trailing" id="t2O-9J-gCw"/>
+                            <constraint firstItem="OuM-OK-uf9" firstAttribute="leading" secondItem="zED-r5-adC" secondAttribute="leading" id="vur-Eh-XTQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="feedbackMsg" destination="zED-r5-adC" id="SH2-Hp-Ock"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

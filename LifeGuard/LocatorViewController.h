@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LocationUpdateTimer.h"
+#import <MessageUI/MessageUI.h>
 
-@interface LocatorViewController : UIViewController
+
+@interface LocatorViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 @property (strong, nonatomic) LocationUpdateTimer *locUpdateTimer;
 
@@ -18,5 +20,6 @@
 - (IBAction)btnCallEocTouchUp:(id)sender;
 - (IBAction)btnSendLocationNowTouchUp:(id)sender;
 - (IBAction)btnAboutUsTouchUp:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *feedbackMsg;
 
 @end

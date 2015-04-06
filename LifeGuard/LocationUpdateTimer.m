@@ -17,6 +17,18 @@
 -(id)init {
     
     self = [super init];
+    
+    // use when using this object's location manager
+    // otherwise use AppDelegate's
+    // [self initLocationManager];
+    
+    [self startTimer];
+    return self;
+    
+}
+
+-(void)initLocationManager
+{
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     //self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -26,11 +38,9 @@
         [self.locationManager requestAlwaysAuthorization];
     }
     [self.locationManager startUpdatingLocation];
-    [self startTimer];
-    return self;
+    
     
 }
-
 
 
 - (void)startTimer {
@@ -82,9 +92,58 @@
 
 - (void)timerFired:(NSTimer *)timer {
     
-    NSDate *now = [[NSDate alloc] init];
-    NSLog(@"LocationUpdateTimer fired at %@, latitude = %f, longitude = %f", now, self.currLocation.latitude, self.currLocation.longitude );
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
+    
+    NSDate *now = [[NSDate alloc] init];
+
+    // line for logging when using this AppDelegate location manager
+    NSLog(@"LocationUpdateTimer fired at %@, lat/long = %f,%f", now, delegate.currLocation.latitude, delegate.currLocation.longitude );
+
+    // line for logging when using this object's location manager
+    // NSLog(@"LocationUpdateTimer fired at %@, latitude = %f, longitude = %f", now, self.currLocation.latitude, self.currLocation.longitude );
+    
+    [self postLocation];
+
+}
+
+-(void)postLocation
+{
+    // create session with Lifeguard URL and session defaults
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    NSDate *now = [[NSDate alloc] init];
+    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+
+    NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%f&lat=%f&long=%f",
+                        vendorId, floor([now timeIntervalSince1970]),
+                        delegate.currLocation.latitude, delegate.currLocation.longitude];
+    NSURL *url = [NSURL URLWithString:urlWithParams];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    // set request to be a GET
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"GET";
+    
+    //
+    NSDictionary *dictionary = @{@"key1": @"value1"};
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                   options:kNilOptions error:&error];
+    
+    if (!error) {
+        // 4
+        NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request
+                                                                   fromData:data completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
+                                                                       // Handle response here
+                                                                   }];
+        
+        // 5
+        [uploadTask resume];
+    }
+    
+    
 }
 
 @end
