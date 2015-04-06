@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64FC8721ACF2823002AE683 /* LocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A64FC8711ACF2823002AE683 /* LocatorViewController.m */; };
 		A6DE6C061ACDE03300FAADCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C051ACDE03300FAADCE /* main.m */; };
 		A6DE6C091ACDE03300FAADCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C081ACDE03300FAADCE /* AppDelegate.m */; };
 		A6DE6C0C1ACDE03300FAADCE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C0B1ACDE03300FAADCE /* ViewController.m */; };
@@ -14,6 +15,8 @@
 		A6DE6C111ACDE03300FAADCE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6DE6C101ACDE03300FAADCE /* Images.xcassets */; };
 		A6DE6C141ACDE03300FAADCE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DE6C121ACDE03300FAADCE /* LaunchScreen.xib */; };
 		A6DE6C201ACDE03300FAADCE /* LifeGuardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C1F1ACDE03300FAADCE /* LifeGuardTests.m */; };
+		A6DE6C2A1ACDFBA800FAADCE /* CdcLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C291ACDFBA800FAADCE /* CdcLocator.m */; };
+		A6FD54A61ACEEED6001634A8 /* LocationUpdateTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD54A51ACEEED6001634A8 /* LocationUpdateTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A6DE6C001ACDE03300FAADCE /* LifeGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64FC8701ACF2823002AE683 /* LocatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocatorViewController.h; sourceTree = "<group>"; };
+		A64FC8711ACF2823002AE683 /* LocatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocatorViewController.m; sourceTree = "<group>"; };
+		A6DE6C001ACDE03300FAADCE /* Lifeguard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifeguard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6DE6C041ACDE03300FAADCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6DE6C051ACDE03300FAADCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6DE6C071ACDE03300FAADCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -37,9 +42,13 @@
 		A6DE6C0E1ACDE03300FAADCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6DE6C101ACDE03300FAADCE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6DE6C131ACDE03300FAADCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A6DE6C191ACDE03300FAADCE /* LifeGuardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeGuardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6DE6C191ACDE03300FAADCE /* Lifeguard.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lifeguard.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6DE6C1E1ACDE03300FAADCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6DE6C1F1ACDE03300FAADCE /* LifeGuardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeGuardTests.m; sourceTree = "<group>"; };
+		A6DE6C291ACDFBA800FAADCE /* CdcLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CdcLocator.m; sourceTree = "<group>"; };
+		A6DE6C2B1ACDFC2800FAADCE /* CdcLocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CdcLocator.h; sourceTree = "<group>"; };
+		A6FD54A51ACEEED6001634A8 /* LocationUpdateTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationUpdateTimer.m; path = ../../lifeguard/LifeGuard/LocationUpdateTimer.m; sourceTree = "<group>"; };
+		A6FD54A71ACEEF92001634A8 /* LocationUpdateTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocationUpdateTimer.h; path = ../../lifeguard/LifeGuard/LocationUpdateTimer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +72,8 @@
 		A6DE6BF71ACDE03300FAADCE = {
 			isa = PBXGroup;
 			children = (
-				A6DE6C021ACDE03300FAADCE /* LifeGuard */,
-				A6DE6C1C1ACDE03300FAADCE /* LifeGuardTests */,
+				A6DE6C021ACDE03300FAADCE /* Lifeguard */,
+				A6DE6C1C1ACDE03300FAADCE /* LifeguardTests */,
 				A6DE6C011ACDE03300FAADCE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,13 +81,13 @@
 		A6DE6C011ACDE03300FAADCE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6DE6C001ACDE03300FAADCE /* LifeGuard.app */,
-				A6DE6C191ACDE03300FAADCE /* LifeGuardTests.xctest */,
+				A6DE6C001ACDE03300FAADCE /* Lifeguard.app */,
+				A6DE6C191ACDE03300FAADCE /* Lifeguard.temp_caseinsensitive_renameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A6DE6C021ACDE03300FAADCE /* LifeGuard */ = {
+		A6DE6C021ACDE03300FAADCE /* Lifeguard */ = {
 			isa = PBXGroup;
 			children = (
 				A6DE6C071ACDE03300FAADCE /* AppDelegate.h */,
@@ -89,7 +98,14 @@
 				A6DE6C101ACDE03300FAADCE /* Images.xcassets */,
 				A6DE6C121ACDE03300FAADCE /* LaunchScreen.xib */,
 				A6DE6C031ACDE03300FAADCE /* Supporting Files */,
+				A6DE6C291ACDFBA800FAADCE /* CdcLocator.m */,
+				A6DE6C2B1ACDFC2800FAADCE /* CdcLocator.h */,
+				A6FD54A51ACEEED6001634A8 /* LocationUpdateTimer.m */,
+				A6FD54A71ACEEF92001634A8 /* LocationUpdateTimer.h */,
+				A64FC8701ACF2823002AE683 /* LocatorViewController.h */,
+				A64FC8711ACF2823002AE683 /* LocatorViewController.m */,
 			);
+			name = Lifeguard;
 			path = LifeGuard;
 			sourceTree = "<group>";
 		};
@@ -102,12 +118,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A6DE6C1C1ACDE03300FAADCE /* LifeGuardTests */ = {
+		A6DE6C1C1ACDE03300FAADCE /* LifeguardTests */ = {
 			isa = PBXGroup;
 			children = (
 				A6DE6C1F1ACDE03300FAADCE /* LifeGuardTests.m */,
 				A6DE6C1D1ACDE03300FAADCE /* Supporting Files */,
 			);
+			name = LifeguardTests;
 			path = LifeGuardTests;
 			sourceTree = "<group>";
 		};
@@ -122,9 +139,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A6DE6BFF1ACDE03300FAADCE /* LifeGuard */ = {
+		A6DE6BFF1ACDE03300FAADCE /* Lifeguard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6DE6C231ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "LifeGuard" */;
+			buildConfigurationList = A6DE6C231ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "Lifeguard" */;
 			buildPhases = (
 				A6DE6BFC1ACDE03300FAADCE /* Sources */,
 				A6DE6BFD1ACDE03300FAADCE /* Frameworks */,
@@ -134,14 +151,14 @@
 			);
 			dependencies = (
 			);
-			name = LifeGuard;
+			name = Lifeguard;
 			productName = LifeGuard;
-			productReference = A6DE6C001ACDE03300FAADCE /* LifeGuard.app */;
+			productReference = A6DE6C001ACDE03300FAADCE /* Lifeguard.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A6DE6C181ACDE03300FAADCE /* LifeGuardTests */ = {
+		A6DE6C181ACDE03300FAADCE /* LifeguardTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6DE6C261ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "LifeGuardTests" */;
+			buildConfigurationList = A6DE6C261ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "LifeguardTests" */;
 			buildPhases = (
 				A6DE6C151ACDE03300FAADCE /* Sources */,
 				A6DE6C161ACDE03300FAADCE /* Frameworks */,
@@ -152,9 +169,9 @@
 			dependencies = (
 				A6DE6C1B1ACDE03300FAADCE /* PBXTargetDependency */,
 			);
-			name = LifeGuardTests;
+			name = LifeguardTests;
 			productName = LifeGuardTests;
-			productReference = A6DE6C191ACDE03300FAADCE /* LifeGuardTests.xctest */;
+			productReference = A6DE6C191ACDE03300FAADCE /* Lifeguard.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -168,6 +185,12 @@
 				TargetAttributes = {
 					A6DE6BFF1ACDE03300FAADCE = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = Z827RBGAJC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					A6DE6C181ACDE03300FAADCE = {
 						CreatedOnToolsVersion = 6.2;
@@ -175,7 +198,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A6DE6BFB1ACDE03300FAADCE /* Build configuration list for PBXProject "LifeGuard" */;
+			buildConfigurationList = A6DE6BFB1ACDE03300FAADCE /* Build configuration list for PBXProject "Lifeguard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -188,8 +211,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A6DE6BFF1ACDE03300FAADCE /* LifeGuard */,
-				A6DE6C181ACDE03300FAADCE /* LifeGuardTests */,
+				A6DE6BFF1ACDE03300FAADCE /* Lifeguard */,
+				A6DE6C181ACDE03300FAADCE /* LifeguardTests */,
 			);
 		};
 /* End PBXProject section */
@@ -220,7 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6DE6C0C1ACDE03300FAADCE /* ViewController.m in Sources */,
+				A6FD54A61ACEEED6001634A8 /* LocationUpdateTimer.m in Sources */,
 				A6DE6C091ACDE03300FAADCE /* AppDelegate.m in Sources */,
+				A64FC8721ACF2823002AE683 /* LocatorViewController.m in Sources */,
+				A6DE6C2A1ACDFBA800FAADCE /* CdcLocator.m in Sources */,
 				A6DE6C061ACDE03300FAADCE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +264,7 @@
 /* Begin PBXTargetDependency section */
 		A6DE6C1B1ACDE03300FAADCE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A6DE6BFF1ACDE03300FAADCE /* LifeGuard */;
+			target = A6DE6BFF1ACDE03300FAADCE /* Lifeguard */;
 			targetProxy = A6DE6C1A1ACDE03300FAADCE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -343,9 +369,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = LifeGuard/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Lifeguard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lifeguard;
 			};
 			name = Debug;
 		};
@@ -353,9 +380,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = LifeGuard/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Lifeguard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lifeguard;
 			};
 			name = Release;
 		};
@@ -373,7 +401,7 @@
 				);
 				INFOPLIST_FILE = LifeGuardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lifeguard.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeGuard.app/LifeGuard";
 			};
 			name = Debug;
@@ -388,7 +416,7 @@
 				);
 				INFOPLIST_FILE = LifeGuardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lifeguard.temp_caseinsensitive_renameTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeGuard.app/LifeGuard";
 			};
 			name = Release;
@@ -396,7 +424,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A6DE6BFB1ACDE03300FAADCE /* Build configuration list for PBXProject "LifeGuard" */ = {
+		A6DE6BFB1ACDE03300FAADCE /* Build configuration list for PBXProject "Lifeguard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A6DE6C211ACDE03300FAADCE /* Debug */,
@@ -405,21 +433,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6DE6C231ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "LifeGuard" */ = {
+		A6DE6C231ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "Lifeguard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A6DE6C241ACDE03300FAADCE /* Debug */,
 				A6DE6C251ACDE03300FAADCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		A6DE6C261ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "LifeGuardTests" */ = {
+		A6DE6C261ACDE03300FAADCE /* Build configuration list for PBXNativeTarget "LifeguardTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A6DE6C271ACDE03300FAADCE /* Debug */,
 				A6DE6C281ACDE03300FAADCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
