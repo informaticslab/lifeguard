@@ -10,6 +10,7 @@
 #import "CdcLocator.h"
 #import "LocationUpdateTimer.h"
 
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -21,6 +22,13 @@
 
 @property (nonatomic) CLLocationCoordinate2D currLocation;
 @property (nonatomic) CLLocationAccuracy currLocationAccuracy;
+
+
+// Scheme 2 properties below
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property BOOL isBackgroundMode;
+@property BOOL deferringUpdates;
+@property CLLocation *userLocation;
 
 @end
 

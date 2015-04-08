@@ -10,7 +10,8 @@
 #import "LocationUpdateTimer.h"
 
 // #define SECONDS_BETWEEN_UPDATES 60*15
-#define SECONDS_BETWEEN_UPDATES 5
+
+#define SECONDS_BETWEEN_UPDATES 10
 
 @implementation LocationUpdateTimer
 
@@ -21,7 +22,8 @@
     // use when using this object's location manager
     // otherwise use AppDelegate's
     // [self initLocationManager];
-    
+    self.lifeguardService = [[LifeguardService alloc] init];
+
     [self startTimer];
     return self;
     
@@ -40,6 +42,19 @@
     [self.locationManager startUpdatingLocation];
     
     
+}
+
+-(CLLocationCoordinate2D)getCurrentLocationCoordinates
+{
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    return delegate.userLocation.coordinate;
+
+}
+
+-(void)sendLocation
+{
+    [self.lifeguardService sendLocation:[self getCurrentLocationCoordinates]];
 }
 
 
@@ -92,58 +107,18 @@
 
 - (void)timerFired:(NSTimer *)timer {
     
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    
     NSDate *now = [[NSDate alloc] init];
+    CLLocationCoordinate2D currCoordinates = [self getCurrentLocationCoordinates];
 
     // line for logging when using this AppDelegate location manager
-    NSLog(@"LocationUpdateTimer fired at %@, lat/long = %f,%f", now, delegate.currLocation.latitude, delegate.currLocation.longitude );
+    NSLog(@"LocationUpdateTimer fired at %@, lat/long = %f,%f", now, currCoordinates.latitude, currCoordinates.longitude);
 
     // line for logging when using this object's location manager
     // NSLog(@"LocationUpdateTimer fired at %@, latitude = %f, longitude = %f", now, self.currLocation.latitude, self.currLocation.longitude );
     
-    [self postLocation];
+    [self.lifeguardService sendLocation:currCoordinates];
 
 }
 
--(void)postLocation
-{
-    // create session with Lifeguard URL and session defaults
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-    NSDate *now = [[NSDate alloc] init];
-    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-
-    NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%f&lat=%f&long=%f",
-                        vendorId, floor([now timeIntervalSince1970]),
-                        delegate.currLocation.latitude, delegate.currLocation.longitude];
-    NSURL *url = [NSURL URLWithString:urlWithParams];
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    // set request to be a GET
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    
-    //
-    NSDictionary *dictionary = @{@"key1": @"value1"};
-    NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                   options:kNilOptions error:&error];
-    
-    if (!error) {
-        // 4
-        NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request
-                                                                   fromData:data completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
-                                                                       // Handle response here
-                                                                   }];
-        
-        // 5
-        [uploadTask resume];
-    }
-    
-    
-}
 
 @end

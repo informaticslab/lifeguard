@@ -14,11 +14,11 @@
 @implementation LocatorViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.locUpdateTimer = [[LocationUpdateTimer alloc] init];
-    
-    
+    self.feedbackMsg.text = @"";
 
 }
 
@@ -38,6 +38,9 @@
 */
 
 - (IBAction)btnShowDeviceIdTouchUp:(id)sender {
+
+    self.feedbackMsg.text = @"";
+
     
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
@@ -61,6 +64,8 @@
 }
 
 - (IBAction)btnEmailDeviceIdTouchUp:(id)sender {
+    self.feedbackMsg.text = @"";
+
     
     if ([MFMailComposeViewController canSendMail])
         // The device can send email.
@@ -124,6 +129,8 @@
 }
 
 - (IBAction)btnCallEocTouchUp:(id)sender {
+    self.feedbackMsg.text = @"";
+
     
     NSString *phoneNUmber = @"+17706825071";
     NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phoneNUmber]];
@@ -140,9 +147,14 @@
 
 - (IBAction)btnSendLocationNowTouchUp:(id)sender {
     
+    [self.locUpdateTimer sendLocation];
+    
 }
 
 - (IBAction)btnAboutUsTouchUp:(id)sender {
+    
+    self.feedbackMsg.text = @"";
+
 
     NSString *aboutUs = [NSString stringWithFormat:@"Lifeguard for iOS %@", [self versionBuild]];
 
@@ -162,6 +174,9 @@
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
 
+}
+
+- (IBAction)btnPrivacyInfoTouchUp:(id)sender {
 }
 
 - (NSString *) appVersion

@@ -20,6 +20,9 @@
 - (IBAction)btnCallEocTouchUp:(id)sender;
 - (IBAction)btnSendLocationNowTouchUp:(id)sender;
 - (IBAction)btnAboutUsTouchUp:(id)sender;
+- (IBAction)btnPrivacyInfoTouchUp:(id)sender;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *feedbackMsg;
 
 @end

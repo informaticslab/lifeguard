@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CdcLocator.h"
+#import "LifeguardService.h"
 
 @interface LocationUpdateTimer  : NSObject <CLLocationManagerDelegate>
 {
@@ -20,10 +21,13 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic) CLLocationCoordinate2D currLocation;
 @property (nonatomic) CLLocationAccuracy currLocationAccuracy;
+@property (strong, nonatomic) LifeguardService *lifeguardService;
+
 
 - (void)timerFired:(NSTimer *)timer;
 - (void)startTimer;
 - (void)stopTimer;
+-(void)sendLocation;
 
 @end
 
