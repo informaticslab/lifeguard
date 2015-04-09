@@ -25,12 +25,12 @@
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
-    //    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%f&lat=%f&long=%f",
-    //                               vendorId, floor([now timeIntervalSince1970]),
-    //                               _userLocation.coordinate.latitude, _userLocation.coordinate.longitude];
-    NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%f&lat=%f&long=%f",
-                               vendorId, floor([now timeIntervalSince1970]),
-                               location.latitude, location.longitude];
+    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%f&lat=%f&long=%f",
+                                   vendorId, floor([now timeIntervalSince1970]),
+                                   location.latitude, location.longitude];
+    //NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%f&lat=%f&long=%f",
+    //                           vendorId, floor([now timeIntervalSince1970]),
+    //                           location.latitude, location.longitude];
     NSLog(@"Sending HTTP POST %@", urlWithParams);
     
     
