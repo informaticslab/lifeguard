@@ -18,7 +18,6 @@
 
 
 -(void)sendLocation:(CLLocationCoordinate2D)location;
-
 {
     // create session with Lifeguard URL and session defaults
     

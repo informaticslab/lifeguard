@@ -20,27 +20,9 @@
     self = [super init];
     
     // use when using this object's location manager
-    // otherwise use AppDelegate's
-    // [self initLocationManager];
     self.lifeguardService = [[LifeguardService alloc] init];
-
     [self startTimer];
     return self;
-    
-}
-
--(void)initLocationManager
-{
-    self.locationManager = [[CLLocationManager alloc]init];
-    self.locationManager.delegate = self;
-    //self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    //self.locationManager.activityType = CLActivityTypeOtherNavigation;
-    
-    if(IS_OS_8_OR_LATER) {
-        [self.locationManager requestAlwaysAuthorization];
-    }
-    [self.locationManager startUpdatingLocation];
-    
     
 }
 
@@ -67,34 +49,6 @@
                                                  repeats:YES];
     }
 }
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    
-    NSLog(@"locationManager didUpdateLocations: %@",locations);
-    
-    for (int i=0; i<locations.count; i++){
-        
-        CLLocation *newLocation = [locations objectAtIndex:i];
-        CLLocationCoordinate2D theLocation = newLocation.coordinate;
-        CLLocationAccuracy theAccuracy = newLocation.horizontalAccuracy;
-        
-        self.currLocation = theLocation;
-        self.currLocationAccuracy = theAccuracy;
-    }
-    
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error
-{
-    NSLog(@"Error while getting core location : %@",[error localizedFailureReason]);
-    if ([error code] == kCLErrorDenied) {
-        // denied
-    }
-    [manager stopUpdatingLocation];
-}
-
-
 
 - (void)stopTimer {
     
