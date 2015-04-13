@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -103,7 +103,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results Displayed Here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zED-r5-adC">
                                 <rect key="frame" x="16" y="348" width="288" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -169,11 +169,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITj-qP-4h6">
-                                <rect key="frame" x="16" y="88" width="288" height="234"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITj-qP-4h6">
+                                <rect key="frame" x="16" y="88" width="288" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">The CDC Lifeguard app reports your location to CDC IT on a periodic basis. To disable this app's ability to report your location go to the Privacy section under Settings and touch Location Services. Select the CDC Lifeguard app and then select the Never option under the Allow Location Access settings. </string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">This application reports your location to CDC every 15 minutes. To assure that data is being transmitted, on your phone, go to:
+
+Settings &gt;&gt; Privacy &gt;&gt; Location Services &gt;&gt; CDC Lifeguard
+
+Confirm that “Always” is selected.
+
+To disable the reporting function, select “Never” instead of “Always.”
+
+To shut down the application from running in the background, double-tap the home button, swipe left or right with your finger to navigate to CDC Lifeguard, and then swipe your finger up.  You will see the application deleted from the screen – and is now shut down.  To restart the application, simply press the Lifeguard icon on the home screen.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
