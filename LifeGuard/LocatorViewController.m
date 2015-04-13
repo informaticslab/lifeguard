@@ -153,26 +153,6 @@
 
 - (IBAction)btnAboutUsTouchUp:(id)sender {
     
-    self.feedbackMsg.text = @"";
-
-
-    NSString *aboutUs = [NSString stringWithFormat:@"Lifeguard for iOS %@", [self versionBuild]];
-
-    UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"About Us"
-                                          message:aboutUs
-                                          preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                               style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction *action)
-                               {
-                                   [alertController dismissViewControllerAnimated:YES completion:nil];
-                               }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated:YES completion:nil];
 
 }
 

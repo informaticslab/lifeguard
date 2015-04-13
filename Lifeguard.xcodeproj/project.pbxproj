@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7811ADC2D0700E4E395 /* privacy.html */; };
+		A60DC7851ADC2D0700E4E395 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7821ADC2D0700E4E395 /* help.html */; };
+		A60DC7861ADC2D0700E4E395 /* about-us.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7831ADC2D0700E4E395 /* about-us.html */; };
+		A60DC78C1ADC321300E4E395 /* privacy-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7891ADC321300E4E395 /* privacy-icon.png */; };
+		A60DC78D1ADC321300E4E395 /* about-us-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A60DC78A1ADC321300E4E395 /* about-us-icon.png */; };
+		A60DC78E1ADC321300E4E395 /* help-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A60DC78B1ADC321300E4E395 /* help-icon.png */; };
+		A60DC7901ADC342200E4E395 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A60DC78F1ADC342200E4E395 /* AboutUsViewController.m */; };
+		A60DC7941ADC352E00E4E395 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A60DC7931ADC352E00E4E395 /* HelpViewController.m */; };
 		A64FC8721ACF2823002AE683 /* LocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A64FC8711ACF2823002AE683 /* LocatorViewController.m */; };
 		A68232DB1AD5B18300E16249 /* LifeguardService.m in Sources */ = {isa = PBXBuildFile; fileRef = A68232DA1AD5B18300E16249 /* LifeguardService.m */; };
 		A691DB761AD5754000FE93B9 /* PrivacyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A691DB751AD5754000FE93B9 /* PrivacyInfoViewController.m */; };
@@ -31,6 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A60DC7811ADC2D0700E4E395 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
+		A60DC7821ADC2D0700E4E395 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+		A60DC7831ADC2D0700E4E395 /* about-us.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "about-us.html"; sourceTree = "<group>"; };
+		A60DC7891ADC321300E4E395 /* privacy-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "privacy-icon.png"; sourceTree = "<group>"; };
+		A60DC78A1ADC321300E4E395 /* about-us-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-us-icon.png"; sourceTree = "<group>"; };
+		A60DC78B1ADC321300E4E395 /* help-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help-icon.png"; sourceTree = "<group>"; };
+		A60DC78F1ADC342200E4E395 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		A60DC7911ADC349F00E4E395 /* AboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		A60DC7921ADC352E00E4E395 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		A60DC7931ADC352E00E4E395 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		A64FC8701ACF2823002AE683 /* LocatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocatorViewController.h; sourceTree = "<group>"; };
 		A64FC8711ACF2823002AE683 /* LocatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocatorViewController.m; sourceTree = "<group>"; };
 		A68232DA1AD5B18300E16249 /* LifeguardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeguardService.m; sourceTree = "<group>"; };
@@ -94,6 +112,12 @@
 		A6DE6C021ACDE03300FAADCE /* Lifeguard */ = {
 			isa = PBXGroup;
 			children = (
+				A60DC7891ADC321300E4E395 /* privacy-icon.png */,
+				A60DC78A1ADC321300E4E395 /* about-us-icon.png */,
+				A60DC78B1ADC321300E4E395 /* help-icon.png */,
+				A60DC7811ADC2D0700E4E395 /* privacy.html */,
+				A60DC7821ADC2D0700E4E395 /* help.html */,
+				A60DC7831ADC2D0700E4E395 /* about-us.html */,
 				A6DE6C071ACDE03300FAADCE /* AppDelegate.h */,
 				A6DE6C081ACDE03300FAADCE /* AppDelegate.m */,
 				A6DE6C0A1ACDE03300FAADCE /* ViewController.h */,
@@ -111,6 +135,10 @@
 				A691DB751AD5754000FE93B9 /* PrivacyInfoViewController.m */,
 				A68232DA1AD5B18300E16249 /* LifeguardService.m */,
 				A68232DC1AD5B25800E16249 /* LifeguardService.h */,
+				A60DC78F1ADC342200E4E395 /* AboutUsViewController.m */,
+				A60DC7911ADC349F00E4E395 /* AboutUsViewController.h */,
+				A60DC7921ADC352E00E4E395 /* HelpViewController.h */,
+				A60DC7931ADC352E00E4E395 /* HelpViewController.m */,
 			);
 			name = Lifeguard;
 			path = LifeGuard;
@@ -230,7 +258,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6DE6C0F1ACDE03300FAADCE /* Main.storyboard in Resources */,
+				A60DC7861ADC2D0700E4E395 /* about-us.html in Resources */,
+				A60DC7851ADC2D0700E4E395 /* help.html in Resources */,
+				A60DC78D1ADC321300E4E395 /* about-us-icon.png in Resources */,
+				A60DC78C1ADC321300E4E395 /* privacy-icon.png in Resources */,
+				A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */,
 				A6DE6C111ACDE03300FAADCE /* Images.xcassets in Resources */,
+				A60DC78E1ADC321300E4E395 /* help-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,9 +287,11 @@
 				A6FD54A61ACEEED6001634A8 /* LocationUpdateTimer.m in Sources */,
 				A691DB761AD5754000FE93B9 /* PrivacyInfoViewController.m in Sources */,
 				A6DE6C091ACDE03300FAADCE /* AppDelegate.m in Sources */,
+				A60DC7941ADC352E00E4E395 /* HelpViewController.m in Sources */,
 				A64FC8721ACF2823002AE683 /* LocatorViewController.m in Sources */,
 				A6DE6C2A1ACDFBA800FAADCE /* CdcLocator.m in Sources */,
 				A6DE6C061ACDE03300FAADCE /* main.m in Sources */,
+				A60DC7901ADC342200E4E395 /* AboutUsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

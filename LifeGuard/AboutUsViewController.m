@@ -1,22 +1,23 @@
 //
-//  PrivacyInfoViewController.m
+//  AboutUsViewController.m
 //  Lifeguard
 //
-//  Created by jtq6 on 4/8/15.
+//  Created by jtq6 on 4/13/15.
 //  Copyright (c) 2015 CDC. All rights reserved.
 //
 
-#import "PrivacyInfoViewController.h"
+#import "AboutUsViewController.h"
 
-@implementation PrivacyInfoViewController
+
+@implementation AboutUsViewController
 
 - (void)viewDidLoad {
-   
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     NSURL *url=[[NSBundle mainBundle] bundleURL];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"privacy"
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"about-us"
                                                      ofType:@"html"];
     
     NSString *html = [NSString stringWithContentsOfFile:path
@@ -26,7 +27,7 @@
     [self.webView loadHTMLString:html baseURL:url];
     
     
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,18 +36,18 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)btnDoneTouchUp:(id)sender {
-
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-
+    
 }
 @end
