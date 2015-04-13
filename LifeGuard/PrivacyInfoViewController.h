@@ -10,5 +10,6 @@
 
 @interface PrivacyInfoViewController : UIViewController
 - (IBAction)btnDoneTouchUp:(id)sender;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
