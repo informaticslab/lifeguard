@@ -16,6 +16,7 @@
 @interface LifeguardService : NSObject
 
 -(void)sendLocation:(CLLocationCoordinate2D)location;
+@property(nonatomic, strong) NSString *statusString;
 
 @end
 #endif

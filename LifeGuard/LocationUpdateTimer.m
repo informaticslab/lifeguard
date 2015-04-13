@@ -11,7 +11,7 @@
 
 // #define SECONDS_BETWEEN_UPDATES 60*15
 
-#define SECONDS_BETWEEN_UPDATES 10
+#define SECONDS_BETWEEN_UPDATES 120
 
 @implementation LocationUpdateTimer
 

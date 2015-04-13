@@ -28,7 +28,9 @@
     self.btnAboutUs.backgroundColor = btnBackground;
     self.btnHelp.backgroundColor = btnBackground;
 
-    
+    // registaer for Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationServiceUpdate:)
+                                                 name:@"LocationServiceNotification" object:nil];
 
 }
 
@@ -155,9 +157,20 @@
     
 }
 
-- (IBAction)btnSendLocationNowTouchUp:(id)sender {
+-(void)locationServiceUpdate:(NSNotification *)notification
+{
+
+    self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
+
     
+}
+
+- (IBAction)btnSendLocationNowTouchUp:(id)sender {
+
+    self.feedbackMsg.text = @"";
+
     [self.locUpdateTimer sendLocation];
+    
     
 }
 

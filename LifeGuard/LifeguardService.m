@@ -48,22 +48,40 @@
         // handle basic connectivity issues here
         if (error) {
             NSLog(@"dataTaskWithRequest error: %@", error);
-            return;
+            self.statusString = error.userInfo[@"NSLocalizedDescription"];
+            
         }
         
         // handle HTTP errors here
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        else if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             
             NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
             
+
+            
             if (statusCode != 200) {
                 NSLog(@"dataTaskWithRequest HTTP status code: %ld", (long)statusCode);
-                return;
+                self.statusString = [NSString stringWithFormat:@"HTTP error code %ld occurred.", (long)statusCode];
+            } else {
+                self.statusString = @"Location sent successfully.";
             }
+            
+            
+            
         }
         
+        else {
+            self.statusString = @"Location sent successfully.";
+
         // otherwise, everything is probably fine and you should interpret the `data` contents
         NSLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            
+        }
+        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"LocationServiceNotification" object:self];
+
+        return;
+
         
     }];
     
