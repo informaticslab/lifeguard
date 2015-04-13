@@ -22,6 +22,13 @@
 - (IBAction)btnAboutUsTouchUp:(id)sender;
 - (IBAction)btnPrivacyInfoTouchUp:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnPrivacyInfo;
+@property (weak, nonatomic) IBOutlet UIButton *btnShowDeviceId;
+@property (weak, nonatomic) IBOutlet UIButton *btnEmailDeviceId;
+@property (weak, nonatomic) IBOutlet UIButton *btnCallEoc;
+@property (weak, nonatomic) IBOutlet UIButton *btnSendLocationNow;
+@property (weak, nonatomic) IBOutlet UIButton *btnAboutUs;
+@property (weak, nonatomic) IBOutlet UIButton *btnHelp;
 
 @property (weak, nonatomic) IBOutlet UILabel *feedbackMsg;
 

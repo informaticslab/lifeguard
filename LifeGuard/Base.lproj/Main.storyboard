@@ -20,9 +20,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone6-bg" translatesAutoresizingMaskIntoConstraints="NO" id="taR-A1-Sa2">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </imageView>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGn-3C-BhJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGn-3C-BhJ">
                                 <rect key="frame" x="41" y="226" width="238" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2Ii-QG-blw"/>
                                 </constraints>
@@ -34,9 +33,8 @@
                                     <action selector="btnEmailDeviceIdTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="R28-7F-CDd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYX-fR-eeF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYX-fR-eeF">
                                 <rect key="frame" x="41" y="264" width="238" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xaA-Dk-3X0"/>
                                 </constraints>
@@ -48,9 +46,8 @@
                                     <action selector="btnCallEocTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hcA-hS-P9m"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI3-Tv-t9O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI3-Tv-t9O">
                                 <rect key="frame" x="41" y="302" width="238" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U8v-XA-sLi"/>
                                 </constraints>
@@ -62,9 +59,8 @@
                                     <action selector="btnSendLocationNowTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0Xd-cI-lEo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-uV-Lho">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-uV-Lho">
                                 <rect key="frame" x="41" y="340" width="238" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="D6w-WM-SRv"/>
                                 </constraints>
@@ -77,9 +73,8 @@
                                     <segue destination="3sq-zH-a0z" kind="modal" identifier="showAboutUs" id="k5t-EW-hgM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="704-AJ-nkP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="704-AJ-nkP">
                                 <rect key="frame" x="41" y="188" width="238" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Vdf-lj-6pp"/>
                                 </constraints>
@@ -89,9 +84,8 @@
                                     <action selector="btnShowDeviceIdTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YxG-kS-3t2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2th-cM-Msy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2th-cM-Msy">
                                 <rect key="frame" x="41" y="150" width="238" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="286-Hh-EZ3"/>
                                 </constraints>
@@ -108,9 +102,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-Bh-8Se">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-Bh-8Se">
                                 <rect key="frame" x="41" y="378" width="238" height="34"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="SIU-Gq-4pf"/>
                                 </constraints>
@@ -159,6 +152,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="CDC Lifeguard" id="Z7Y-S8-9Ev"/>
                     <connections>
+                        <outlet property="btnAboutUs" destination="cjm-uV-Lho" id="ioc-cR-PEf"/>
+                        <outlet property="btnCallEoc" destination="zYX-fR-eeF" id="AKc-Hi-Bda"/>
+                        <outlet property="btnEmailDeviceId" destination="PGn-3C-BhJ" id="a7q-3p-tQh"/>
+                        <outlet property="btnHelp" destination="UCV-Bh-8Se" id="Al1-Vh-9au"/>
+                        <outlet property="btnPrivacyInfo" destination="2th-cM-Msy" id="sAY-KX-R8z"/>
+                        <outlet property="btnSendLocationNow" destination="vI3-Tv-t9O" id="kQb-bu-PuJ"/>
+                        <outlet property="btnShowDeviceId" destination="704-AJ-nkP" id="zkS-ym-tDh"/>
                         <outlet property="feedbackMsg" destination="zED-r5-adC" id="SH2-Hp-Ock"/>
                     </connections>
                 </viewController>

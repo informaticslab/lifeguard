@@ -19,6 +19,16 @@
     // Do any additional setup after loading the view.
     self.locUpdateTimer = [[LocationUpdateTimer alloc] init];
     self.feedbackMsg.text = @"";
+    UIColor *btnBackground = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.6];
+    self.btnPrivacyInfo.backgroundColor = btnBackground;
+    self.btnShowDeviceId.backgroundColor = btnBackground;
+    self.btnEmailDeviceId.backgroundColor = btnBackground;
+    self.btnCallEoc.backgroundColor = btnBackground;
+    self.btnSendLocationNow.backgroundColor = btnBackground;
+    self.btnAboutUs.backgroundColor = btnBackground;
+    self.btnHelp.backgroundColor = btnBackground;
+
+    
 
 }
 
