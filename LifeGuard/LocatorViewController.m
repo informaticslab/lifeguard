@@ -9,6 +9,9 @@
 #import "LocatorViewController.h"
 @interface LocatorViewController ()
 
+@property (strong, nonatomic) NSTimer *uiUpdateTimer;
+
+
 @end
 
 @implementation LocatorViewController
@@ -18,7 +21,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.locUpdateTimer = [[LocationUpdateTimer alloc] init];
+
+    self.feedbackMsg.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.7];
     self.feedbackMsg.text = @"";
+    
     UIColor *btnBackground = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.6];
     self.btnPrivacyInfo.backgroundColor = btnBackground;
     self.btnShowDeviceId.backgroundColor = btnBackground;
@@ -28,9 +34,12 @@
     self.btnAboutUs.backgroundColor = btnBackground;
     self.btnHelp.backgroundColor = btnBackground;
 
-    // registaer for Notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationServiceUpdate:)
-                                                 name:@"LocationServiceNotification" object:nil];
+    self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                 target:self
+                                               selector:@selector(uiUpdateTimerFired:)
+                                               userInfo:nil
+                                                repeats:YES];
+     [self sendLocation];
 
 }
 
@@ -157,19 +166,23 @@
     
 }
 
--(void)locationServiceUpdate:(NSNotification *)notification
-{
+- (void)uiUpdateTimerFired:(NSTimer *)timer {
 
     self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
 
     
 }
 
+-(void)sendLocation
+{
+    
+    self.feedbackMsg.text = @"Sending location....";
+    [self.locUpdateTimer sendLocation];
+
+}
+
 - (IBAction)btnSendLocationNowTouchUp:(id)sender {
 
-    self.feedbackMsg.text = @"";
-
-    [self.locUpdateTimer sendLocation];
     
     
 }

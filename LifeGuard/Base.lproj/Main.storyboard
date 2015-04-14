@@ -27,6 +27,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Email Device ID">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -40,6 +41,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Call EOC">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -53,6 +55,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Send Location Now">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -66,6 +69,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="About Us">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -79,7 +83,9 @@
                                     <constraint firstAttribute="height" constant="30" id="Vdf-lj-6pp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Show Device ID"/>
+                                <state key="normal" title="Show Device ID">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="btnShowDeviceIdTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YxG-kS-3t2"/>
                                 </connections>
@@ -90,16 +96,22 @@
                                     <constraint firstAttribute="height" constant="30" id="286-Hh-EZ3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Privacy Information"/>
+                                <state key="normal" title="Privacy Information">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="btnPrivacyInfoTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lRl-KH-vPG"/>
                                     <segue destination="Dm4-im-Sjt" kind="modal" identifier="showPrivacyInfo" id="ADv-Xc-H23"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Results Displayed Here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zED-r5-adC">
-                                <rect key="frame" x="16" y="413" width="288" height="61"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results Displayed Here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zED-r5-adC">
+                                <rect key="frame" x="16" y="426" width="288" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="chn-ox-e3w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-Bh-8Se">
@@ -109,6 +121,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Help">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -119,10 +132,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zED-r5-adC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="0Wp-2s-thT"/>
                             <constraint firstItem="vI3-Tv-t9O" firstAttribute="leading" secondItem="cjm-uV-Lho" secondAttribute="leading" id="1zm-dP-wvm"/>
                             <constraint firstItem="2th-cM-Msy" firstAttribute="leading" secondItem="704-AJ-nkP" secondAttribute="leading" id="2jV-8J-1fv"/>
-                            <constraint firstItem="W50-P9-Myn" firstAttribute="top" secondItem="zED-r5-adC" secondAttribute="bottom" constant="114" id="4mt-GB-vzb"/>
                             <constraint firstItem="704-AJ-nkP" firstAttribute="top" secondItem="2th-cM-Msy" secondAttribute="bottom" constant="8" symbolic="YES" id="6WM-Cb-p1E"/>
+                            <constraint firstItem="zED-r5-adC" firstAttribute="centerX" secondItem="UCV-Bh-8Se" secondAttribute="centerX" id="7Ah-pi-1X4"/>
                             <constraint firstItem="PGn-3C-BhJ" firstAttribute="top" secondItem="704-AJ-nkP" secondAttribute="bottom" constant="8" symbolic="YES" id="AYF-j5-gk8"/>
                             <constraint firstItem="vI3-Tv-t9O" firstAttribute="top" secondItem="zYX-fR-eeF" secondAttribute="bottom" constant="8" symbolic="YES" id="BMC-Ju-1b3"/>
                             <constraint firstItem="UCV-Bh-8Se" firstAttribute="leading" secondItem="cjm-uV-Lho" secondAttribute="leading" id="BRh-Y7-xVo"/>
@@ -131,9 +145,8 @@
                             <constraint firstItem="zYX-fR-eeF" firstAttribute="trailing" secondItem="vI3-Tv-t9O" secondAttribute="trailing" id="KG0-Vy-oT2"/>
                             <constraint firstItem="704-AJ-nkP" firstAttribute="trailing" secondItem="PGn-3C-BhJ" secondAttribute="trailing" id="KdL-X6-TcA"/>
                             <constraint firstItem="UCV-Bh-8Se" firstAttribute="trailing" secondItem="cjm-uV-Lho" secondAttribute="trailing" id="Khk-0g-SdL"/>
-                            <constraint firstItem="zED-r5-adC" firstAttribute="top" secondItem="cjm-uV-Lho" secondAttribute="bottom" constant="23" id="Kth-CW-eYZ"/>
                             <constraint firstItem="2th-cM-Msy" firstAttribute="top" secondItem="D9p-wE-zud" secondAttribute="bottom" constant="86" id="U2c-jO-0Il"/>
-                            <constraint firstItem="cjm-uV-Lho" firstAttribute="centerX" secondItem="zED-r5-adC" secondAttribute="centerX" id="XUj-4S-Lhs"/>
+                            <constraint firstItem="W50-P9-Myn" firstAttribute="top" secondItem="zED-r5-adC" secondAttribute="bottom" constant="105" id="WWm-Ug-bvg"/>
                             <constraint firstItem="taR-A1-Sa2" firstAttribute="centerX" secondItem="vI3-Tv-t9O" secondAttribute="centerX" id="YlE-6b-bJn"/>
                             <constraint firstItem="taR-A1-Sa2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="agm-N3-B9I"/>
                             <constraint firstItem="vI3-Tv-t9O" firstAttribute="trailing" secondItem="cjm-uV-Lho" secondAttribute="trailing" id="cw6-7h-Bzb"/>
@@ -147,7 +160,6 @@
                             <constraint firstItem="zYX-fR-eeF" firstAttribute="top" secondItem="PGn-3C-BhJ" secondAttribute="bottom" constant="8" symbolic="YES" id="rcH-04-acC"/>
                             <constraint firstItem="PGn-3C-BhJ" firstAttribute="leading" secondItem="zYX-fR-eeF" secondAttribute="leading" id="sfU-9D-bUY"/>
                             <constraint firstItem="2th-cM-Msy" firstAttribute="trailing" secondItem="704-AJ-nkP" secondAttribute="trailing" id="wVL-07-fbn"/>
-                            <constraint firstItem="zED-r5-adC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="xX3-xG-UeR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CDC Lifeguard" id="Z7Y-S8-9Ev"/>

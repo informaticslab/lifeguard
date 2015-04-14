@@ -13,6 +13,11 @@
 -(id)init {
     
     self = [super init];
+    self.dateFormat = [[NSDateFormatter alloc] init];
+    self.dateFormat.dateStyle = NSDateFormatterNoStyle;
+    self.dateFormat.timeStyle = NSDateFormatterShortStyle;
+    
+
     return self;
 }
 
@@ -63,7 +68,7 @@
                 NSLog(@"dataTaskWithRequest HTTP status code: %ld", (long)statusCode);
                 self.statusString = [NSString stringWithFormat:@"HTTP error code %ld occurred.", (long)statusCode];
             } else {
-                self.statusString = @"Location sent successfully.";
+                [self updateSuccess];
             }
             
             
@@ -71,15 +76,13 @@
         }
         
         else {
-            self.statusString = @"Location sent successfully.";
+            [self updateSuccess];
 
         // otherwise, everything is probably fine and you should interpret the `data` contents
         NSLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             
         }
         
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"LocationServiceNotification" object:self];
-
         return;
 
         
@@ -87,6 +90,21 @@
     
     [task resume];
 }
+
+-(void)updateSuccess
+{
+    NSDate *now = [[NSDate alloc] init];
+    NSString *dateString = [self.dateFormat stringFromDate:now];
+    NSString *status = [NSString stringWithFormat:@"Location successfully updated at %@.", dateString];
+    
+    NSLog(@"Updated success: %@", status);
+
+    self.statusString = status;
+
+    
+}
+
+
 
 @end
 

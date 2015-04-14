@@ -32,6 +32,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *feedbackMsg;
 
--(void)locationServiceUpdate:(NSNotification *)notification;
+
 
 @end
