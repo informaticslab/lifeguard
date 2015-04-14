@@ -144,8 +144,8 @@
     self.feedbackMsg.text = @"";
 
     
-    NSString *phoneNUmber = @"+14045537870s";
-    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phoneNUmber]];
+    NSString *phoneNumber = @"+14045537870";
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",phoneNumber]];
     
     if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
         [[UIApplication sharedApplication] openURL:phoneUrl];
