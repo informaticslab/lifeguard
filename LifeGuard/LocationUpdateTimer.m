@@ -9,10 +9,9 @@
 #import "AppDelegate.h"
 #import "LocationUpdateTimer.h"
 
-// #define SECONDS_BETWEEN_UPDATES 60*15
 
-#define SECONDS_BETWEEN_UPDATES 10
-#define VALID_LOCATION_SECONDS 2
+#define SECONDS_BETWEEN_UPDATES 120
+#define VALID_LOCATION_SECONDS 1
 
 @implementation LocationUpdateTimer
 
@@ -32,7 +31,7 @@
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return delegate.userLocation.coordinate;
-
+    
 }
 
 -(void)sendLocation
@@ -44,10 +43,10 @@
 - (void)startFirstLocationTimer {
     if (!self.timer) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:VALID_LOCATION_SECONDS
-                                                  target:self
-                                                selector:@selector(timerFired:)
-                                                userInfo:nil
-                                                 repeats:YES];
+                                                      target:self
+                                                    selector:@selector(timerFired:)
+                                                    userInfo:nil
+                                                     repeats:YES];
     }
 }
 
@@ -75,33 +74,31 @@
     
     
     CLLocationCoordinate2D currCoordinates = [self getCurrentLocationCoordinates];
-
-    if (self.haveFirstLocation == NO) {
+    
+    // do nothing if we do not have first valid location
+    if (self.haveFirstLocation == NO && currCoordinates.latitude == 0 && currCoordinates.longitude == 0)
+        return;
+    
+    // if we just found first valid location
+    if (self.haveFirstLocation == NO && (currCoordinates.latitude != 0 || currCoordinates.longitude != 0)) {
         
-        // check for valid location
-        if (currCoordinates.latitude != 0 || currCoordinates.longitude != 0) {
-            
-            // have valid location, stop fast first location timer
-            // use slower update location timer
-            self.haveFirstLocation = YES;
-            [self stopTimer];
-            [self startLocationUpdateTimer];
-            return;
-            
-        }
+        // have valid location, stop fast first location timer
+        // use slower update location timer
+        self.haveFirstLocation = YES;
+        [self stopTimer];
+        [self startLocationUpdateTimer];
     }
-        
+    
     NSDate *now = [[NSDate alloc] init];
-
+    
     // line for logging when using this AppDelegate location manager
     NSLog(@"LocationUpdateTimer fired at %@, lat/long = %f,%f", now, currCoordinates.latitude, currCoordinates.longitude);
-
+    
     // line for logging when using this object's location manager
     // NSLog(@"LocationUpdateTimer fired at %@, latitude = %f, longitude = %f", now, self.currLocation.latitude, self.currLocation.longitude );
     
     [self.lifeguardService sendLocation:currCoordinates];
-
+    
 }
-
 
 @end
