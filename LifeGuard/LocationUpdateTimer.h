@@ -14,18 +14,16 @@
 #import "LifeguardService.h"
 
 @interface LocationUpdateTimer  : NSObject <CLLocationManagerDelegate>
-{
-    NSTimer *timer;
-}
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic) CLLocationCoordinate2D currLocation;
 @property (nonatomic) CLLocationAccuracy currLocationAccuracy;
 @property (strong, nonatomic) LifeguardService *lifeguardService;
-
+@property (strong, nonatomic) NSTimer *timer;
+@property BOOL haveFirstLocation;
 
 - (void)timerFired:(NSTimer *)timer;
-- (void)startTimer;
+- (void)startLocationUpdateTimer;
 - (void)stopTimer;
 -(void)sendLocation;
 

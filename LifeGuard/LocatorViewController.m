@@ -183,7 +183,7 @@
 
 - (IBAction)btnSendLocationNowTouchUp:(id)sender {
 
-    
+    [self sendLocation];
     
 }
 

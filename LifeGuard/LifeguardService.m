@@ -24,8 +24,15 @@
 
 -(void)sendLocation:(CLLocationCoordinate2D)location;
 {
-    // create session with Lifeguard URL and session defaults
     
+    // check for valid location, don't report 0.0/0.0
+    if (location.latitude == 0 && location.longitude == 0) {
+        [self waitForLocation];
+        return;
+        
+    }
+    
+    // create session with Lifeguard URL and session defaults
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
@@ -97,8 +104,19 @@
     NSString *dateString = [self.dateFormat stringFromDate:now];
     NSString *status = [NSString stringWithFormat:@"Location successfully updated at %@.", dateString];
     
-    NSLog(@"Updated success: %@", status);
+    NSLog(@"LifeguardService success: %@", status);
 
+    self.statusString = status;
+
+    
+}
+
+-(void)waitForLocation
+{
+    NSString *status = [NSString stringWithFormat:@"Waiting for valid location..."];
+    
+    NSLog(@"LifeguardService update: %@", status);
+    
     self.statusString = status;
 
     
