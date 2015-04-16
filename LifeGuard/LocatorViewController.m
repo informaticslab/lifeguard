@@ -87,11 +87,28 @@
 - (IBAction)btnEmailDeviceIdTouchUp:(id)sender {
     self.feedbackMsg.text = @"";
 
-    
-    if ([MFMailComposeViewController canSendMail])
-        // The device can send email.
+    // can the device can send email?
+    if ([MFMailComposeViewController canSendMail] == NO)
     {
         [self displayMailComposerSheet];
+    } else {
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Device Can't Send Email"
+                                              message:@"This device can not send email or an email account has not been configured."
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [alertController dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+        
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+
     }
 
     
