@@ -7,7 +7,7 @@ The Lifeguard iPhone app provides location information of people in the field.
 To develop an iPhone app that reports location information of people in the field.
 
 ##Requirements
-* iOS 7.0
+* iOS 8.3
 
 ## Roadmap
 * Active development, 1 week iterations
