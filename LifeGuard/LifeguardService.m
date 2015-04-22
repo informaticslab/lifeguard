@@ -36,13 +36,16 @@
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
-    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%f&lat=%f&long=%f",
-                                   vendorId, floor([now timeIntervalSince1970]),
-                                   location.latitude, location.longitude];
-    //NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%f&lat=%f&long=%f",
+    NSString *urlWithParams = [NSString stringWithFormat:@"http://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&long=%f",
+                               vendorId, floor([now timeIntervalSince1970]),
+                               location.latitude, location.longitude];
+//    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
+//                                   vendorId, floor([now timeIntervalSince1970]),
+//                                   location.latitude, location.longitude];
+    //NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
     //                           vendorId, floor([now timeIntervalSince1970]),
     //                           location.latitude, location.longitude];
-    NSLog(@"Sending HTTP POST %@", urlWithParams);
+    NSLog(@"Sending HTTP GET %@", urlWithParams);
     
     
     NSURL *url = [NSURL URLWithString:urlWithParams];
@@ -51,9 +54,9 @@
     // NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     // NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
-    // set request to be a POST
+    // set request to be a GET
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"POST";
+    request.HTTPMethod = @"GET";
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -77,9 +80,6 @@
             } else {
                 [self updateSuccess];
             }
-            
-            
-            
         }
         
         else {
