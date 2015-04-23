@@ -43,6 +43,7 @@
 
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -176,6 +177,7 @@
 - (void)uiUpdateTimerFired:(NSTimer *)timer {
 
     self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
+    //NSLog(@"UI Update Timer Fired");
 
     
 }

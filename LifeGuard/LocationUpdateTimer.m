@@ -10,7 +10,7 @@
 #import "LocationUpdateTimer.h"
 
 
-#define SECONDS_BETWEEN_UPDATES 15*60
+#define SECONDS_BETWEEN_UPDATES 60*15
 #define VALID_LOCATION_SECONDS 1
 
 @implementation LocationUpdateTimer

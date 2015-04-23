@@ -18,15 +18,7 @@
     // Override point for customization after application launch.
     NSLog(@"didFinishLaunchingWithOptions");
     
-    //self.locator = [CdcLocator singleton];
-    //self.locator.afterResume = NO;
-    
-    // scheme 2
     [self initLocationManager];
-    
-    
-    //    [self addApplicationStatusToPList:@"didFinishLaunchingWithOptions"];
-    
     UIAlertView * alert;
     
 
@@ -49,39 +41,7 @@
                                 otherButtonTitles:nil, nil];
         [alert show];
         
-    } else {
-        
-        //        // When there is a significant changes of the location,
-        //        // The key UIApplicationLaunchOptionsLocationKey will be returned from didFinishLaunchingWithOptions
-        //        // When the app is receiving the key, it must reinitiate the locationManager and get
-        //        // the latest location updates
-        //
-        //        // This UIApplicationLaunchOptionsLocationKey key enables the location update even when
-        //        // the app has been killed/terminated (not in background) by iOS or the user.
-        //
-        //        if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-        //            NSLog(@"UIApplicationLaunchOptionsLocationKey");
-        //
-        //            // This "afterResume" flag is just to show that he receiving location updates
-        //            // are actually from the key "UIApplicationLaunchOptionsLocationKey"
-        //            self.locator.afterResume = YES;
-        //
-        //            self.locator.locationManager = [[CLLocationManager alloc]init];
-        //            self.locator.locationManager.delegate = self;
-        //            self.locator.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-        //            self.locator.locationManager.activityType = CLActivityTypeOtherNavigation;
-        //
-        //            if(IS_OS_8_OR_LATER) {
-        //                [self.locator.locationManager requestAlwaysAuthorization];
-        //            }
-        //
-        //            [self.locator.locationManager startMonitoringSignificantLocationChanges];
-        //
-        //            [self addResumeLocationToPList];
-        //        }
     }
-    
-    
     
     return YES;
     
@@ -362,24 +322,23 @@
     //  store data
     CLLocation *newLocation = [locations lastObject];
     self.userLocation = newLocation;
-
+    
     
     // tell the centralManager that you want to deferred this updatedLocation
-    if (_isBackgroundMode && !_deferringUpdates)
+    if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && !_deferringUpdates)
     {
         _deferringUpdates = YES;
-        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:10];
-    } else {
-        
+        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:60*15];
     }
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error {
     
     _deferringUpdates = NO;
-    LifeguardService *lifeguardService = [[LifeguardService alloc] init];
-    
-    [lifeguardService sendLocation:_userLocation.coordinate];
+//    NSLog(@"CDC LIfeguard didFinishDeferredUpdatesWithError was called." );
+//    LifeguardService *lifeguardService = [[LifeguardService alloc] init];
+//    
+//    [lifeguardService sendLocation:_userLocation.coordinate];
 }
 
 
