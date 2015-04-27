@@ -328,7 +328,7 @@
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && !_deferringUpdates)
     {
         _deferringUpdates = YES;
-        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:60*15];
+        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:120];
     }
 }
 
