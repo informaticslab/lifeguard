@@ -326,7 +326,7 @@
     // tell the location manager to deferred location updates if in background
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground))
     {
-        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:60];
+        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:15*60];
     }
 }
 
