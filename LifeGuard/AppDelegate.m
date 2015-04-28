@@ -319,26 +319,20 @@
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    //  store data
+    //  store location data
     CLLocation *newLocation = [locations lastObject];
     self.userLocation = newLocation;
     
-    
-    // tell the centralManager that you want to deferred this updatedLocation
-    if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && !_deferringUpdates)
+    // tell the location manager to deferred location updates if in background
+    if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground))
     {
-        _deferringUpdates = YES;
-        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:120];
+        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:60];
     }
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error {
     
-    _deferringUpdates = NO;
-//    NSLog(@"CDC LIfeguard didFinishDeferredUpdatesWithError was called." );
-//    LifeguardService *lifeguardService = [[LifeguardService alloc] init];
-//    
-//    [lifeguardService sendLocation:_userLocation.coordinate];
+        NSLog(@"CDC Lifeguard didFinishDeferredUpdatesWithError was called with NSError: %@",[error localizedDescription] );
 }
 
 
