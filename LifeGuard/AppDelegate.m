@@ -14,14 +14,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
+    UIAlertView * alert;
+
     // Override point for customization after application launch.
     NSLog(@"didFinishLaunchingWithOptions");
     
     [self initLocationManager];
-    UIAlertView * alert;
     
-
+    
     // Background App Refresh in Settings->General must be enabled for location updates to work in the background
     if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied){
         
@@ -277,32 +278,61 @@
     if ([CLLocationManager locationServicesEnabled] == NO) {
         NSLog(@"Location Service are not enabled.");
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Location Services Disabled"
-                                              message:@"Location Services must be enabled for CDC Lifeguard to report your location. Please go to Settings > Privacy and turn on Location Services."
-                                             delegate:nil
-                                    cancelButtonTitle:@"OK"
-                                    otherButtonTitles:nil, nil];
+                                                       message:@"Location Services must be enabled for CDC Lifeguard to report your location. Please go to Settings > Privacy > Location Services and turn on Location Services."
+                                                      delegate:nil
+                                             cancelButtonTitle:@"OK"
+                                             otherButtonTitles:nil, nil];
+        [alert show];
+        
+    } else {
+        
+        
+        // get authorization status
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        
+        // request authorization if has not been set as is the case after app installaion
+        if ( status == kCLAuthorizationStatusNotDetermined) {
+            NSLog(@"Core Location Authorization Status set to kCLAuthorizationStatusNotDetermined.");
+            [_locationManager requestAlwaysAuthorization];
+        }
+        
+        // if authorized setting is While Using the App, let user know app works better when setting is Always
+        else if (status == kCLAuthorizationStatusDenied) {
+            NSLog(@"CDC Lifeguard Is Denied Location Access.");
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"CDC Lifeguard Denied Location Access"
+                                                           message:@"CDC Lifeguard has been denied access to your location. In order to report your location go to Settings > Privacy > Location Services, select CDC Lifeguard and then select Always. See Help for more information."
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil, nil];
             [alert show];
-   
-    }
-    
-    
-    // get authorization status
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-    if ( status == kCLAuthorizationStatusNotDetermined) {
-        NSLog(@"Core Location Authorization Status set to kCLAuthorizationStatusNotDetermined.");
-        [_locationManager requestAlwaysAuthorization];
-    } else if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse ) {
+            
+        }
         
-        NSLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
-        // This is the most important property to set for the manager. It ultimately determines how the manager will
-        // attempt to acquire location and thus, the amount of power that will be consumed.
-        _locationManager.desiredAccuracy = 45;
-        _locationManager.distanceFilter = 100;
+        else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            NSLog(@"CDC Lifeguard Does Not Always Have Location Access.");
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"CDC Lifeguard Does Not Always Have Location Access"
+                                                           message:@"CDC Lifeguard does not have access to your location when the app is running in the background. In order to report your location when the app is in the background go to Settings > Privacy > Location Services, select CDC Lifeguard and then select Always. See Help for more information."
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil, nil];
+            [alert show];
+            
+        }
         
-        // Once configured, the location manager must be "started".
-        [_locationManager startUpdatingLocation];
         
+        // if authorized status is Always or While Using the App
+        if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            
+            NSLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
+            // This is the most important property to set for the manager. It ultimately determines how the manager will
+            // attempt to acquire location and thus, the amount of power that will be consumed.
+            _locationManager.desiredAccuracy = 45;
+            _locationManager.distanceFilter = 100;
+            
+            // Once configured, the location manager must be "started".
+            [_locationManager startUpdatingLocation];
+            
+        }
     }
 }
 
@@ -332,10 +362,19 @@
 
 - (void) locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error {
     
-        NSLog(@"CDC Lifeguard didFinishDeferredUpdatesWithError was called with NSError: %@",[error localizedDescription] );
+    NSLog(@"CDC Lifeguard didFinishDeferredUpdatesWithError was called with NSError: %@",[error localizedDescription] );
 }
 
-
+-(BOOL)isLocationManagerAuthorized
+{
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse )
+        return YES;
+    else
+        return NO;
+    
+}
 
 
 @end
