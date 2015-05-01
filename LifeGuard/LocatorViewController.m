@@ -34,6 +34,11 @@
     self.btnAboutUs.backgroundColor = btnBackground;
     self.btnHelp.backgroundColor = btnBackground;
 
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
+
     self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                  target:self
                                                selector:@selector(uiUpdateTimerFired:)
@@ -41,6 +46,32 @@
                                                 repeats:YES];
      [self sendLocation];
 
+}
+
+
+-(void)appWillEnterForeground:(NSNotification*)note
+{
+
+    NSLog(@"CDC Lifeguard in foreground");
+    
+
+}
+
+
+-(void)appWillResignActive:(NSNotification*)note
+{
+
+    NSLog(@"CDC Lifeguard in background");
+    
+}
+
+
+-(void)appWillTerminate:(NSNotification*)note
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
+    
 }
 
 

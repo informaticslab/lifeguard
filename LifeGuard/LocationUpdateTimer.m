@@ -10,7 +10,7 @@
 #import "LocationUpdateTimer.h"
 
 
-#define SECONDS_BETWEEN_UPDATES 15*60
+#define SECONDS_BETWEEN_UPDATES 10
 #define VALID_LOCATION_SECONDS 1
 
 @implementation LocationUpdateTimer
@@ -72,6 +72,10 @@
 
 - (void)timerFired:(NSTimer *)timer {
     
+    // don't do anything if app delegate is deferring updates
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if ([appDelegate isDeferringLocationUpdates])
+        return;
     
     CLLocationCoordinate2D currCoordinates = [self getCurrentLocationCoordinates];
     

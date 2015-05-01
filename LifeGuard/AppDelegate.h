@@ -22,13 +22,15 @@
 
 @property (nonatomic) CLLocationCoordinate2D currLocation;
 @property (nonatomic) CLLocationAccuracy currLocationAccuracy;
-
+@property(nonatomic, strong) LifeguardService *lifeguardService;
 
 // Scheme 2 properties below
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property BOOL isBackgroundMode;
 @property BOOL deferringUpdates;
 @property CLLocation *userLocation;
+
+-(BOOL)isDeferringLocationUpdates;
 
 @end
 

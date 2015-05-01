@@ -20,7 +20,6 @@
 		A691DB761AD5754000FE93B9 /* PrivacyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A691DB751AD5754000FE93B9 /* PrivacyInfoViewController.m */; };
 		A6DE6C061ACDE03300FAADCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C051ACDE03300FAADCE /* main.m */; };
 		A6DE6C091ACDE03300FAADCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C081ACDE03300FAADCE /* AppDelegate.m */; };
-		A6DE6C0C1ACDE03300FAADCE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C0B1ACDE03300FAADCE /* ViewController.m */; };
 		A6DE6C0F1ACDE03300FAADCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6DE6C0D1ACDE03300FAADCE /* Main.storyboard */; };
 		A6DE6C111ACDE03300FAADCE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6DE6C101ACDE03300FAADCE /* Images.xcassets */; };
 		A6DE6C201ACDE03300FAADCE /* LifeGuardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE6C1F1ACDE03300FAADCE /* LifeGuardTests.m */; };
@@ -60,8 +59,6 @@
 		A6DE6C051ACDE03300FAADCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6DE6C071ACDE03300FAADCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6DE6C081ACDE03300FAADCE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A6DE6C0A1ACDE03300FAADCE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A6DE6C0B1ACDE03300FAADCE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A6DE6C0E1ACDE03300FAADCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6DE6C101ACDE03300FAADCE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6DE6C191ACDE03300FAADCE /* Lifeguard.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lifeguard.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,8 +117,6 @@
 				A60DC7831ADC2D0700E4E395 /* about-us.html */,
 				A6DE6C071ACDE03300FAADCE /* AppDelegate.h */,
 				A6DE6C081ACDE03300FAADCE /* AppDelegate.m */,
-				A6DE6C0A1ACDE03300FAADCE /* ViewController.h */,
-				A6DE6C0B1ACDE03300FAADCE /* ViewController.m */,
 				A6DE6C0D1ACDE03300FAADCE /* Main.storyboard */,
 				A6DE6C101ACDE03300FAADCE /* Images.xcassets */,
 				A6DE6C031ACDE03300FAADCE /* Supporting Files */,
@@ -282,7 +277,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6DE6C0C1ACDE03300FAADCE /* ViewController.m in Sources */,
 				A68232DB1AD5B18300E16249 /* LifeguardService.m in Sources */,
 				A6FD54A61ACEEED6001634A8 /* LocationUpdateTimer.m in Sources */,
 				A691DB761AD5754000FE93B9 /* PrivacyInfoViewController.m in Sources */,
