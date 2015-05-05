@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6AE1AF94E9100807A4C /* AppManager.m */; };
+		A601B6B11AF9529D00807A4C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A601B6B01AF9529D00807A4C /* Settings.bundle */; };
 		A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7811ADC2D0700E4E395 /* privacy.html */; };
 		A60DC7851ADC2D0700E4E395 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7821ADC2D0700E4E395 /* help.html */; };
 		A60DC7861ADC2D0700E4E395 /* about-us.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7831ADC2D0700E4E395 /* about-us.html */; };
@@ -39,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A601B6AD1AF94E9100807A4C /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
+		A601B6AE1AF94E9100807A4C /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
+		A601B6B01AF9529D00807A4C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A60DC7811ADC2D0700E4E395 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		A60DC7821ADC2D0700E4E395 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		A60DC7831ADC2D0700E4E395 /* about-us.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "about-us.html"; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 		A6DE6BF71ACDE03300FAADCE = {
 			isa = PBXGroup;
 			children = (
+				A601B6B01AF9529D00807A4C /* Settings.bundle */,
 				A6DE6C021ACDE03300FAADCE /* Lifeguard */,
 				A6DE6C1C1ACDE03300FAADCE /* LifeguardTests */,
 				A6DE6C011ACDE03300FAADCE /* Products */,
@@ -112,33 +118,35 @@
 		A6DE6C021ACDE03300FAADCE /* Lifeguard */ = {
 			isa = PBXGroup;
 			children = (
-				A60DC7891ADC321300E4E395 /* privacy-icon.png */,
 				A60DC78A1ADC321300E4E395 /* about-us-icon.png */,
-				A60DC78B1ADC321300E4E395 /* help-icon.png */,
-				A60DC7811ADC2D0700E4E395 /* privacy.html */,
-				A60DC7821ADC2D0700E4E395 /* help.html */,
 				A60DC7831ADC2D0700E4E395 /* about-us.html */,
+				A60DC7911ADC349F00E4E395 /* AboutUsViewController.h */,
+				A60DC78F1ADC342200E4E395 /* AboutUsViewController.m */,
 				A6DE6C071ACDE03300FAADCE /* AppDelegate.h */,
 				A6DE6C081ACDE03300FAADCE /* AppDelegate.m */,
-				A6DE6C0A1ACDE03300FAADCE /* ViewController.h */,
-				A6DE6C0B1ACDE03300FAADCE /* ViewController.m */,
-				A6DE6C0D1ACDE03300FAADCE /* Main.storyboard */,
-				A6DE6C101ACDE03300FAADCE /* Images.xcassets */,
-				A6DE6C031ACDE03300FAADCE /* Supporting Files */,
-				A6DE6C291ACDFBA800FAADCE /* CdcLocator.m */,
+				A601B6AD1AF94E9100807A4C /* AppManager.h */,
+				A601B6AE1AF94E9100807A4C /* AppManager.m */,
 				A6DE6C2B1ACDFC2800FAADCE /* CdcLocator.h */,
-				A6FD54A51ACEEED6001634A8 /* LocationUpdateTimer.m */,
-				A6FD54A71ACEEF92001634A8 /* LocationUpdateTimer.h */,
-				A64FC8701ACF2823002AE683 /* LocatorViewController.h */,
-				A64FC8711ACF2823002AE683 /* LocatorViewController.m */,
-				A691DB741AD5754000FE93B9 /* PrivacyInfoViewController.h */,
-				A691DB751AD5754000FE93B9 /* PrivacyInfoViewController.m */,
-				A68232DA1AD5B18300E16249 /* LifeguardService.m */,
-				A68232DC1AD5B25800E16249 /* LifeguardService.h */,
-				A60DC78F1ADC342200E4E395 /* AboutUsViewController.m */,
-				A60DC7911ADC349F00E4E395 /* AboutUsViewController.h */,
+				A6DE6C291ACDFBA800FAADCE /* CdcLocator.m */,
+				A60DC78B1ADC321300E4E395 /* help-icon.png */,
+				A60DC7821ADC2D0700E4E395 /* help.html */,
 				A60DC7921ADC352E00E4E395 /* HelpViewController.h */,
 				A60DC7931ADC352E00E4E395 /* HelpViewController.m */,
+				A6DE6C101ACDE03300FAADCE /* Images.xcassets */,
+				A68232DC1AD5B25800E16249 /* LifeguardService.h */,
+				A68232DA1AD5B18300E16249 /* LifeguardService.m */,
+				A6FD54A71ACEEF92001634A8 /* LocationUpdateTimer.h */,
+				A6FD54A51ACEEED6001634A8 /* LocationUpdateTimer.m */,
+				A64FC8701ACF2823002AE683 /* LocatorViewController.h */,
+				A64FC8711ACF2823002AE683 /* LocatorViewController.m */,
+				A6DE6C0D1ACDE03300FAADCE /* Main.storyboard */,
+				A60DC7891ADC321300E4E395 /* privacy-icon.png */,
+				A60DC7811ADC2D0700E4E395 /* privacy.html */,
+				A691DB741AD5754000FE93B9 /* PrivacyInfoViewController.h */,
+				A691DB751AD5754000FE93B9 /* PrivacyInfoViewController.m */,
+				A6DE6C031ACDE03300FAADCE /* Supporting Files */,
+				A6DE6C0A1ACDE03300FAADCE /* ViewController.h */,
+				A6DE6C0B1ACDE03300FAADCE /* ViewController.m */,
 			);
 			name = Lifeguard;
 			path = LifeGuard;
@@ -264,6 +272,7 @@
 				A60DC78C1ADC321300E4E395 /* privacy-icon.png in Resources */,
 				A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */,
 				A6DE6C111ACDE03300FAADCE /* Images.xcassets in Resources */,
+				A601B6B11AF9529D00807A4C /* Settings.bundle in Resources */,
 				A60DC78E1ADC321300E4E395 /* help-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +299,7 @@
 				A60DC7941ADC352E00E4E395 /* HelpViewController.m in Sources */,
 				A64FC8721ACF2823002AE683 /* LocatorViewController.m in Sources */,
 				A6DE6C2A1ACDFBA800FAADCE /* CdcLocator.m in Sources */,
+				A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */,
 				A6DE6C061ACDE03300FAADCE /* main.m in Sources */,
 				A60DC7901ADC342200E4E395 /* AboutUsViewController.m in Sources */,
 			);

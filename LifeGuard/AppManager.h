@@ -9,34 +9,18 @@
 #import <Foundation/Foundation.h>
 
 #import "Debug.h"
-#import "IssuesManager.h"
-#import "JsonParser.h"
-#import "SplitViewManager.h"
 #include "Reachability.h"
-#include "SiteCatalystController.h"
 
 @interface AppManager : NSObject 
 
 @property (nonatomic, strong) NSString *appName;
-@property (nonatomic, strong) UIFont *tableFont;
-@property (nonatomic, strong) UIFont *textFont;
-@property BOOL agreedWithEula;
 
-// Core Data properties
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (strong, nonatomic) IssuesManager *issuesMgr;
-@property (strong, nonatomic) JsonParser *jsonParser;
-@property (strong, nonatomic) SplitViewManager *splitVM;
-@property (weak, nonatomic) UISplitViewController *splitVC;
 @property (strong, nonatomic) Reachability *hostReachability;
-@property (strong, nonatomic) SiteCatalystController *usageTracker;
+@property BOOL isPowerConservationModeOn;
 
 + (id)singletonAppManager;
 -(BOOL)isDebugInfoEnabled;
--(BOOL)isDeviceIpad;
-- (void)saveContext;
+
 
 -(NSString *)getDeviceModel;
 -(NSString *)getDeviceSystemVersion;

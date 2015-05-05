@@ -8,12 +8,15 @@
 
 #import "AppDelegate.h"
 #import "LifeguardService.h"
-
+#import "AppManager.h"
 
 @implementation AppDelegate
 
+AppManager *appMgr;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    appMgr = [AppManager singletonAppManager];
     
     // Override point for customization after application launch.
     NSLog(@"didFinishLaunchingWithOptions");
