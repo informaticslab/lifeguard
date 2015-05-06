@@ -7,8 +7,11 @@
 //
 
 #include "LifeguardService.h"
+#include "AppManager.h"
 
 @implementation LifeguardService
+
+AppManager *appMgr;
 
 -(id)init {
     
@@ -45,7 +48,7 @@
     //NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
     //                           vendorId, floor([now timeIntervalSince1970]),
     //                           location.latitude, location.longitude];
-    NSLog(@"Sending HTTP GET %@", urlWithParams);
+    DebugLog(@"Sending HTTP GET %@", urlWithParams);
     
     
     NSURL *url = [NSURL URLWithString:urlWithParams];
@@ -62,7 +65,7 @@
         
         // handle basic connectivity issues here
         if (error) {
-            NSLog(@"dataTaskWithRequest error: %@", error);
+            DebugLog(@"dataTaskWithRequest error: %@", error);
             self.statusString = error.userInfo[@"NSLocalizedDescription"];
             
         }
@@ -75,7 +78,7 @@
 
             
             if (statusCode != 200) {
-                NSLog(@"dataTaskWithRequest HTTP status code: %ld", (long)statusCode);
+                DebugLog(@"dataTaskWithRequest HTTP status code: %ld", (long)statusCode);
                 self.statusString = [NSString stringWithFormat:@"HTTP error code %ld occurred.", (long)statusCode];
             } else {
                 [self updateSuccess];
@@ -86,7 +89,7 @@
             [self updateSuccess];
 
         // otherwise, everything is probably fine and you should interpret the `data` contents
-        NSLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        DebugLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             
         }
         
@@ -104,7 +107,7 @@
     NSString *dateString = [self.dateFormat stringFromDate:now];
     NSString *status = [NSString stringWithFormat:@"Location successfully updated at %@.", dateString];
     
-    NSLog(@"LifeguardService success: %@", status);
+    DebugLog(@"update success: %@", status);
 
     self.statusString = status;
 
@@ -115,7 +118,7 @@
 {
     NSString *status = [NSString stringWithFormat:@"Waiting for valid location..."];
     
-    NSLog(@"LifeguardService update: %@", status);
+    DebugLog(@"done waiting for location: %@", status);
     
     self.statusString = status;
 

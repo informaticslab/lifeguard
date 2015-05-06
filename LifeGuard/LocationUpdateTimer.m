@@ -97,11 +97,9 @@ AppManager *appMgr;
     NSDate *now = [[NSDate alloc] init];
     
     // line for logging when using this AppDelegate location manager
-    NSLog(@"LocationUpdateTimer fired at %@, lat/long = %f,%f", now, currCoordinates.latitude, currCoordinates.longitude);
+    DebugLog(@"fired at %@, lat/long = %f,%f", now, currCoordinates.latitude, currCoordinates.longitude);
     
-    // line for logging when using this object's location manager
-    // NSLog(@"LocationUpdateTimer fired at %@, latitude = %f, longitude = %f", now, self.currLocation.latitude, self.currLocation.longitude );
-    
+     
     [self.lifeguardService sendLocation:currCoordinates];
     
 }

@@ -94,7 +94,6 @@
     _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     [_locationManager startUpdatingLocation];
     _isBackgroundMode = YES;
-
     
 }
 
@@ -117,5 +116,29 @@
     DebugLog(@"CDC Lifeguard didFinishDeferredUpdatesWithError was called with NSError: %@",[error localizedDescription] );
 }
 
+-(void)startBackgroundLocationUpdates
+{
+    [_locationManager stopUpdatingLocation];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+    _locationManager.pausesLocationUpdatesAutomatically = NO;
+    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    [_locationManager startMonitoringSignificantLocationChanges];
+    _isBackgroundMode = YES;
+    
+}
+
+-(void)startForegroundLocationUpdates
+{
+    [_locationManager stopMonitoringSignificantLocationChanges];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+    _locationManager.pausesLocationUpdatesAutomatically = NO;
+    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    [_locationManager startUpdatingLocation];
+    _isBackgroundMode = YES;
+
+    
+}
 
 @end

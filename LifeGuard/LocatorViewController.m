@@ -177,7 +177,7 @@
 - (void)uiUpdateTimerFired:(NSTimer *)timer {
 
     self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
-    //NSLog(@"UI Update Timer Fired");
+    //DebugLog(@"UI Update Timer Fired");
 
     
 }

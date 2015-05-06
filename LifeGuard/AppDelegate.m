@@ -52,7 +52,6 @@ AppManager *appMgr;
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     
-    
     [appMgr.cdcLocator appInactive];
 
 }
