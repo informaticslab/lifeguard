@@ -7,6 +7,8 @@
 //
 
 #import "LocatorViewController.h"
+#import "AppManager.h"
+
 @interface LocatorViewController ()
 
 @property (strong, nonatomic) NSTimer *uiUpdateTimer;
@@ -15,6 +17,8 @@
 @end
 
 @implementation LocatorViewController
+
+AppManager *appMgr;
 
 - (void)viewDidLoad {
     
@@ -39,7 +43,12 @@
                                                selector:@selector(uiUpdateTimerFired:)
                                                userInfo:nil
                                                 repeats:YES];
-     [self sendLocation];
+    [self sendLocation];
+    
+    // test code for new Status Message class
+    [appMgr.statusMsgs setMessage:@"GPS Timestamp message" forType:STATUS_MESSAGE_GPS_TIMESTAMP];
+    [appMgr.statusMsgs setMessage:@"Location Sent Message " forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
+    [appMgr.statusMsgs setMessage:@"Network reachability message " forType:STATUS_MESSAGE_NETWORK_REACHABILITY];
 
 }
 
@@ -176,7 +185,8 @@
 
 - (void)uiUpdateTimerFired:(NSTimer *)timer {
 
-    self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
+    // self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
+    self.feedbackMsg.text = [appMgr.statusMsgs getNextMessage];
     //DebugLog(@"UI Update Timer Fired");
 
     

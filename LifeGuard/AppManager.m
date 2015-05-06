@@ -52,6 +52,7 @@ static AppManager *sharedAppManager = nil;
         
         [self processAppSettings];
         self.cdcLocator = [[CdcLocator alloc] init];
+        self.statusMsgs = [[StatusMessages alloc] init];
         
     }
 	return self;

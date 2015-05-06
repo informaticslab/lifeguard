@@ -11,6 +11,7 @@
 #import "Debug.h"
 #import "Reachability.h"
 #import "CdcLocator.h"
+#import "StatusMessages.h"
 
 @interface AppManager : NSObject 
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) Reachability *hostReachability;
 @property BOOL isPowerConservationModeOn;
 @property (nonatomic, strong) CdcLocator *cdcLocator;
+@property (nonatomic, strong) StatusMessages *statusMsgs;
 
 + (id)singletonAppManager;
 -(BOOL)isDebugInfoEnabled;

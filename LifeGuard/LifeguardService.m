@@ -39,13 +39,13 @@ AppManager *appMgr;
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
-//    NSString *urlWithParams = [NSString stringWithFormat:@"http://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
+//  NSString *urlWithParams = [NSString stringWithFormat:@"http://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
 //                               vendorId, floor([now timeIntervalSince1970]),
 //                               location.latitude, location.longitude];
     NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
                                    vendorId, floor([now timeIntervalSince1970]),
                                    location.latitude, location.longitude];
-    //NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
+    // NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
     //                           vendorId, floor([now timeIntervalSince1970]),
     //                           location.latitude, location.longitude];
     DebugLog(@"Sending HTTP GET %@", urlWithParams);

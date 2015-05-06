@@ -11,9 +11,10 @@
 @interface StatusMessages : NSObject
 
 // status message types
-#define NETWORK_REACHABILITY 0
-#define GPS_TIMESTAMP 1
-#define LOCATION_SENT_TIMESTAMP 2
+#define STATUS_MESSAGE_NETWORK_REACHABILITY 0
+#define STATUS_MESSAGE_GPS_TIMESTAMP 1
+#define STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP 2
+#define STATUS_MESSAGE_SIZE 3
 
 @property(nonatomic, strong) NSMutableArray *messages;
 @property NSUInteger currMessageIndex;
@@ -22,5 +23,6 @@
 @property(nonatomic, strong) NSString *locationSentTimestamp;
 
 -(void)setMessage:(NSString *)message forType:(int)type;
+-(NSString *)getNextMessage;
 
 @end
