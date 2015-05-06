@@ -12,16 +12,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
-@interface CdcLocator : NSObject 
+@interface CdcLocator : NSObject <CLLocationManagerDelegate>
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic) NSMutableDictionary *locationDictInPlist;
-@property (nonatomic) NSMutableArray *locationArrayInPlist;
-@property (nonatomic) BOOL afterResume;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property BOOL isBackgroundMode;
+@property BOOL deferringUpdates;
+@property CLLocation *userLocation;
 
-+(id)singleton;
+
+-(void)appInactive;
+
 
 @end
 

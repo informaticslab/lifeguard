@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "Debug.h"
-#include "Reachability.h"
+#import "Reachability.h"
+#import "CdcLocator.h"
 
 @interface AppManager : NSObject 
 
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) Reachability *hostReachability;
 @property BOOL isPowerConservationModeOn;
+@property (nonatomic, strong) CdcLocator *cdcLocator;
 
 + (id)singletonAppManager;
 -(BOOL)isDebugInfoEnabled;

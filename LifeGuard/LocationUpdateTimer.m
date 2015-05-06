@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AppManager.h"
 #import "LocationUpdateTimer.h"
 
 
@@ -15,9 +16,13 @@
 
 @implementation LocationUpdateTimer
 
+AppManager *appMgr;
+
 -(id)init {
     
     self = [super init];
+    appMgr = [AppManager singletonAppManager];
+    
     self.haveFirstLocation = NO;
     // use when using this object's location manager
     self.lifeguardService = [[LifeguardService alloc] init];
@@ -29,8 +34,8 @@
 -(CLLocationCoordinate2D)getCurrentLocationCoordinates
 {
     
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return delegate.userLocation.coordinate;
+    return appMgr.cdcLocator.userLocation.coordinate;
+    
     
 }
 

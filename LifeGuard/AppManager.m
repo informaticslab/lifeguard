@@ -51,7 +51,7 @@ static AppManager *sharedAppManager = nil;
         DebugLog(@"Device Model = %@", [self getDeviceModel]);
         
         [self processAppSettings];
-        
+        self.cdcLocator = [[CdcLocator alloc] init];
         
     }
 	return self;
@@ -106,6 +106,7 @@ static AppManager *sharedAppManager = nil;
         _isPowerConservationModeOn = YES;
     else
         _isPowerConservationModeOn = NO;
+    
         
 }
 
