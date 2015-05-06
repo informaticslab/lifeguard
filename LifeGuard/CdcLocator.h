@@ -19,7 +19,7 @@
 @property BOOL isBackgroundMode;
 @property BOOL deferringUpdates;
 @property CLLocation *userLocation;
-
+@property (nonatomic, weak) NSDate *locationTimestamp;
 
 -(void)appInactive;
 

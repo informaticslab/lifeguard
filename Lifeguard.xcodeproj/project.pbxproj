@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6AE1AF94E9100807A4C /* AppManager.m */; };
 		A601B6B11AF9529D00807A4C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A601B6B01AF9529D00807A4C /* Settings.bundle */; };
+		A601B6B41AFA231A00807A4C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6B31AFA231A00807A4C /* Reachability.m */; };
+		A601B6B71AFA27A300807A4C /* StatusMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6B61AFA27A300807A4C /* StatusMessages.m */; };
 		A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7811ADC2D0700E4E395 /* privacy.html */; };
 		A60DC7851ADC2D0700E4E395 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7821ADC2D0700E4E395 /* help.html */; };
 		A60DC7861ADC2D0700E4E395 /* about-us.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7831ADC2D0700E4E395 /* about-us.html */; };
@@ -44,6 +46,10 @@
 		A601B6AD1AF94E9100807A4C /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		A601B6AE1AF94E9100807A4C /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		A601B6B01AF9529D00807A4C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A601B6B21AFA231A00807A4C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A601B6B31AFA231A00807A4C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A601B6B51AFA27A300807A4C /* StatusMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusMessages.h; sourceTree = "<group>"; };
+		A601B6B61AFA27A300807A4C /* StatusMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusMessages.m; sourceTree = "<group>"; };
 		A60DC7811ADC2D0700E4E395 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		A60DC7821ADC2D0700E4E395 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		A60DC7831ADC2D0700E4E395 /* about-us.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "about-us.html"; sourceTree = "<group>"; };
@@ -118,6 +124,8 @@
 		A6DE6C021ACDE03300FAADCE /* Lifeguard */ = {
 			isa = PBXGroup;
 			children = (
+				A601B6B21AFA231A00807A4C /* Reachability.h */,
+				A601B6B31AFA231A00807A4C /* Reachability.m */,
 				A60DC78A1ADC321300E4E395 /* about-us-icon.png */,
 				A60DC7831ADC2D0700E4E395 /* about-us.html */,
 				A60DC7911ADC349F00E4E395 /* AboutUsViewController.h */,
@@ -147,6 +155,8 @@
 				A6DE6C031ACDE03300FAADCE /* Supporting Files */,
 				A6DE6C0A1ACDE03300FAADCE /* ViewController.h */,
 				A6DE6C0B1ACDE03300FAADCE /* ViewController.m */,
+				A601B6B51AFA27A300807A4C /* StatusMessages.h */,
+				A601B6B61AFA27A300807A4C /* StatusMessages.m */,
 			);
 			name = Lifeguard;
 			path = LifeGuard;
@@ -297,10 +307,12 @@
 				A691DB761AD5754000FE93B9 /* PrivacyInfoViewController.m in Sources */,
 				A6DE6C091ACDE03300FAADCE /* AppDelegate.m in Sources */,
 				A60DC7941ADC352E00E4E395 /* HelpViewController.m in Sources */,
+				A601B6B71AFA27A300807A4C /* StatusMessages.m in Sources */,
 				A64FC8721ACF2823002AE683 /* LocatorViewController.m in Sources */,
 				A6DE6C2A1ACDFBA800FAADCE /* CdcLocator.m in Sources */,
 				A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */,
 				A6DE6C061ACDE03300FAADCE /* main.m in Sources */,
+				A601B6B41AFA231A00807A4C /* Reachability.m in Sources */,
 				A60DC7901ADC342200E4E395 /* AboutUsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

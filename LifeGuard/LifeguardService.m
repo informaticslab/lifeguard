@@ -101,6 +101,7 @@ AppManager *appMgr;
     [task resume];
 }
 
+
 -(void)updateSuccess
 {
     NSDate *now = [[NSDate alloc] init];
@@ -119,10 +120,8 @@ AppManager *appMgr;
     NSString *status = [NSString stringWithFormat:@"Waiting for valid location..."];
     
     DebugLog(@"done waiting for location: %@", status);
-    
     self.statusString = status;
 
-    
 }
 
 

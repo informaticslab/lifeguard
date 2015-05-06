@@ -102,6 +102,7 @@
     //  store location data
     CLLocation *newLocation = [locations lastObject];
     self.userLocation = newLocation;
+    self.locationTimestamp = newLocation.timestamp;
     
     // tell the location manager to deferred location updates if in background
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground))
@@ -114,6 +115,7 @@
 {
     
     DebugLog(@"CDC Lifeguard didFinishDeferredUpdatesWithError was called with NSError: %@",[error localizedDescription] );
+    
 }
 
 -(void)startBackgroundLocationUpdates
