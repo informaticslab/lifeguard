@@ -42,7 +42,7 @@ AppManager *appMgr;
     self.btnAboutUs.backgroundColor = btnBackground;
     self.btnHelp.backgroundColor = btnBackground;
 
-    self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1
+    self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3
                                                  target:self
                                                selector:@selector(uiUpdateTimerFired:)
                                                userInfo:nil
@@ -57,15 +57,6 @@ AppManager *appMgr;
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
     
-//    self.internetReachability = [Reachability reachabilityForInternetConnection];
-//    [self.internetReachability startNotifier];
-//    [self updateInterfaceWithReachability:self.internetReachability];
-//    
-//    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
-//    [self.wifiReachability startNotifier];
-//    [self updateInterfaceWithReachability:self.wifiReachability];
-
-
 }
 
 /*

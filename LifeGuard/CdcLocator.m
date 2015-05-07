@@ -86,19 +86,6 @@
     
 }
 
--(void)appInactive
-{
-    
-    [_locationManager stopUpdatingLocation];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
-    _locationManager.pausesLocationUpdatesAutomatically = NO;
-    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
-    [_locationManager startUpdatingLocation];
-    _isBackgroundMode = YES;
-    
-}
-
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     //  store location data
@@ -106,10 +93,12 @@
     self.userLocation = newLocation;
     self.locationTimestamp = newLocation.timestamp;
     
+    DebugLog(@"didUpdateLocations called.");
+    
     // tell the location manager to deferred location updates if in background
-//    if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground))
+//    if (_isBackgroundMode)
 //    {
-//        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:1*60];
+//        //[self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:1*60];
 //    }
 }
 
@@ -122,13 +111,14 @@
 
 -(void)enterForegroundMode
 {
-    [_locationManager stopMonitoringSignificantLocationChanges];
-    
+    //[_locationManager stopMonitoringSignificantLocationChanges];
+    [_locationManager stopUpdatingLocation];
+
     // only report to location manager if the user has traveled 50 meters
     _locationManager.distanceFilter = 50.0f;
     _locationManager.delegate = self;
     _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
-    
+    _isBackgroundMode = NO;
     [_locationManager startUpdatingLocation];
     
 }
@@ -138,38 +128,15 @@
     // Need to stop regular updates first
     [_locationManager stopUpdatingLocation];
     // only report to location manager if the user has traveled 1000 meters
-    _locationManager.distanceFilter = 1000.0f;
+    _locationManager.distanceFilter = 50.0f;
     _locationManager.delegate = self;
     _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    _isBackgroundMode = YES;
 
     // Only monitor significant changes
-    [_locationManager startMonitoringSignificantLocationChanges];
-
-}
-
--(void)startBackgroundLocationUpdates
-{
-    [_locationManager stopUpdatingLocation];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
-    _locationManager.pausesLocationUpdatesAutomatically = NO;
-    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
-    [_locationManager startMonitoringSignificantLocationChanges];
-    _isBackgroundMode = YES;
-    
-}
-
--(void)startForegroundLocationUpdates
-{
-    [_locationManager stopMonitoringSignificantLocationChanges];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
-    _locationManager.pausesLocationUpdatesAutomatically = NO;
-    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    //[_locationManager startMonitoringSignificantLocationChanges];
     [_locationManager startUpdatingLocation];
-    _isBackgroundMode = YES;
 
-    
 }
 
 @end

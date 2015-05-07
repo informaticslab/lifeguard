@@ -38,7 +38,7 @@ AppManager *appMgr;
     }
     
     NSString *timestamp = [self.dateFormat stringFromDate:location.timestamp];
-    NSString *status = [NSString stringWithFormat:@"Last location collected %@.", timestamp];
+    NSString *status = [NSString stringWithFormat:@"Location retrieved from GPS %@", timestamp];
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_GPS_TIMESTAMP];
     
     
@@ -113,7 +113,7 @@ AppManager *appMgr;
 {
     NSDate *now = [[NSDate alloc] init];
     NSString *dateString = [self.dateFormat stringFromDate:now];
-    NSString *status = [NSString stringWithFormat:@"Location updated at %@.", dateString];
+    NSString *status = [NSString stringWithFormat:@"Location sent at %@", dateString];
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
 
 
