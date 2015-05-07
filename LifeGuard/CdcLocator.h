@@ -21,7 +21,8 @@
 @property CLLocation *userLocation;
 @property (nonatomic, weak) NSDate *locationTimestamp;
 
--(void)appInactive;
+-(void)enterForegroundMode;
+-(void)enterBackgroundMode;
 
 
 @end

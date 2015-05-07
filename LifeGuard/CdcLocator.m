@@ -72,12 +72,13 @@
             DebugLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
             // This is the most important property to set for the manager. It ultimately determines how the manager will
             // attempt to acquire location and thus, the amount of power that will be consumed.
-            _locationManager.desiredAccuracy = 45;
-            _locationManager.distanceFilter = 100;
+//            _locationManager.desiredAccuracy = 45;
+//            _locationManager.distanceFilter = 100;
             
             // Once configured, the location manager must be "started".
-            [_locationManager startUpdatingLocation];
+//            [_locationManager startUpdatingLocation];
             
+            [self enterForegroundMode];
         }
     }
 
@@ -106,10 +107,10 @@
     self.locationTimestamp = newLocation.timestamp;
     
     // tell the location manager to deferred location updates if in background
-    if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground))
-    {
-        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:15*60];
-    }
+//    if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground))
+//    {
+//        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:1*60];
+//    }
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error
@@ -117,6 +118,33 @@
     
     DebugLog(@"CDC Lifeguard didFinishDeferredUpdatesWithError was called with NSError: %@",[error localizedDescription] );
     
+}
+
+-(void)enterForegroundMode
+{
+    [_locationManager stopMonitoringSignificantLocationChanges];
+    
+    // only report to location manager if the user has traveled 50 meters
+    _locationManager.distanceFilter = 50.0f;
+    _locationManager.delegate = self;
+    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    
+    [_locationManager startUpdatingLocation];
+    
+}
+
+-(void)enterBackgroundMode
+{
+    // Need to stop regular updates first
+    [_locationManager stopUpdatingLocation];
+    // only report to location manager if the user has traveled 1000 meters
+    _locationManager.distanceFilter = 1000.0f;
+    _locationManager.delegate = self;
+    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+
+    // Only monitor significant changes
+    [_locationManager startMonitoringSignificantLocationChanges];
+
 }
 
 -(void)startBackgroundLocationUpdates

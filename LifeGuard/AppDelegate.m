@@ -50,14 +50,18 @@ AppManager *appMgr;
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
+-(void)applicationWillEnterForeground:(UIApplication *)application {
     
-    [appMgr.cdcLocator appInactive];
-
+    [appMgr.cdcLocator enterForegroundMode];
+    DebugLog(@"application entering foreground..");
+    
 }
 
-
-
-
+-(void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    [appMgr.cdcLocator enterBackgroundMode];
+    DebugLog(@"application entering background..");
+    
+}
 
 @end
