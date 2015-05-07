@@ -8,11 +8,15 @@
 
 #import "LocatorViewController.h"
 #import "AppManager.h"
+#import "Reachability.h"
 
 @interface LocatorViewController ()
 
 @property (strong, nonatomic) NSTimer *uiUpdateTimer;
 
+@property (nonatomic) Reachability *hostReachability;
+@property (nonatomic) Reachability *internetReachability;
+@property (nonatomic) Reachability *wifiReachability;
 
 @end
 
@@ -45,11 +49,101 @@ AppManager *appMgr;
                                                 repeats:YES];
     [self sendLocation];
     
-    // test code for new Status Message class
-    [appMgr.statusMsgs setMessage:@"GPS Timestamp message" forType:STATUS_MESSAGE_GPS_TIMESTAMP];
-    [appMgr.statusMsgs setMessage:@"Location Sent Message " forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
-    [appMgr.statusMsgs setMessage:@"Network reachability message " forType:STATUS_MESSAGE_NETWORK_REACHABILITY];
+    
+    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    NSString *remoteHostName = @"eocexternal.cdc.gov";
+    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    [self.hostReachability startNotifier];
+    [self updateInterfaceWithReachability:self.hostReachability];
+    
+//    self.internetReachability = [Reachability reachabilityForInternetConnection];
+//    [self.internetReachability startNotifier];
+//    [self updateInterfaceWithReachability:self.internetReachability];
+//    
+//    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
+//    [self.wifiReachability startNotifier];
+//    [self updateInterfaceWithReachability:self.wifiReachability];
 
+
+}
+
+/*
+ * Called by Reachability whenever status changes.
+ */
+- (void) reachabilityChanged:(NSNotification *)note
+{
+
+    Reachability *currReach = [note object];
+    NSParameterAssert([currReach isKindOfClass:[Reachability class]]);
+    [self updateInterfaceWithReachability:currReach];
+
+}
+
+
+- (void)updateInterfaceWithReachability:(Reachability *)reachability
+{
+    if (reachability == self.hostReachability)
+    {
+        [self configureReachabilityStatusMessage:STATUS_MESSAGE_HOST_REACHABILITY reachability:reachability];
+        BOOL connectionRequired = [reachability connectionRequired];
+        
+        NSString *baseLabelText = @"";
+        
+        if (connectionRequired)
+        {
+            baseLabelText = NSLocalizedString(@"Cellular data network is available.\nInternet traffic will be routed through it after a connection is established.", @"Reachability text if a connection is required");
+        }
+        else
+        {
+            baseLabelText = NSLocalizedString(@"Cellular data network is active.\nInternet traffic will be routed through it.", @"Reachability text if a connection is not required");
+        }
+        //self.summaryLabel.text = baseLabelText;
+    }
+    
+    if (reachability == self.internetReachability)
+    {
+        [self configureReachabilityStatusMessage:STATUS_MESSAGE_INTERNET_REACHABILITY reachability:reachability];
+    }
+    
+    if (reachability == self.wifiReachability)
+    {
+        [self configureReachabilityStatusMessage:STATUS_MESSAGE_WIFI_REACHABILITY reachability:reachability];
+    }
+
+    
+}
+
+- (void)configureReachabilityStatusMessage:(int)type reachability:(Reachability *)reachability
+{
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    BOOL connectionRequired = [reachability connectionRequired];
+    NSString* statusString = @"";
+    
+    switch (netStatus)
+    {
+        case NotReachable:        {
+            statusString = NSLocalizedString(@"Lifeguard Server Not Reachable", @"");
+            connectionRequired = NO;
+            break;
+        }
+            
+        case ReachableViaWWAN:        {
+            statusString = NSLocalizedString(@"Lifeguard Server Reachable via WWAN", @"");
+            break;
+        }
+        case ReachableViaWiFi:        {
+            statusString = NSLocalizedString(@"Lifeguard Server Reachable via WiFi", @"");
+            break;
+        }
+    }
+    
+    if (connectionRequired)
+    {
+        NSString *connectionRequiredFormatString = NSLocalizedString(@"%@, Connection Required", @"Concatenation of status string with connection requirement");
+        statusString= [NSString stringWithFormat:connectionRequiredFormatString, statusString];
+    }
+    [appMgr.statusMsgs setMessage:statusString forType:type] ;
 }
 
 
@@ -83,6 +177,7 @@ AppManager *appMgr;
     [self presentViewController:alertController animated:YES completion:nil];
 
 }
+
 
 - (IBAction)btnEmailDeviceIdTouchUp:(id)sender {
     self.feedbackMsg.text = @"";

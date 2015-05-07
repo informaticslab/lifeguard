@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Debug.h"
 #import "CdcLocator.h"
+#import "AppManager.h"
 
 @implementation CdcLocator
 

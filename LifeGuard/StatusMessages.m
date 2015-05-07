@@ -35,32 +35,32 @@
 -(NSString *)getNextMessage
 {
     NSString *next = @"";
+    NSUInteger initialIndex = _currMessageIndex;
     
     if ([_messages count] == 0) {
         return next;
     }
     
-    // get next message
-    if (_currMessageIndex < [_messages count] -1)
-        _currMessageIndex++;
-    else
-        _currMessageIndex = 0;
-    next = _messages[_currMessageIndex];
-        
+    // get next message which is not empty string, check for return to initial index
+    do {
+        if (_currMessageIndex < [_messages count] -1)
+            _currMessageIndex++;
+        else
+            _currMessageIndex = 0;
+        next = _messages[_currMessageIndex];
+    } while ([next isEqualToString:@""] && _currMessageIndex != initialIndex);
+    
     
     return [_messages objectAtIndex:_currMessageIndex];
+    
     
 }
 
 // only one message allowed per type
 -(void)setMessage:(NSString *)message forType:(int)type
 {
-
+    
     switch (type) {
-        case STATUS_MESSAGE_NETWORK_REACHABILITY:
-            _networkReachability = message;
-            [_messages replaceObjectAtIndex:STATUS_MESSAGE_NETWORK_REACHABILITY withObject:message];
-            break;
         case STATUS_MESSAGE_GPS_TIMESTAMP:
             _gpsTimestamp = message;
             [_messages replaceObjectAtIndex:STATUS_MESSAGE_GPS_TIMESTAMP withObject:message];
@@ -69,6 +69,18 @@
             _locationSentTimestamp = message;
             [_messages replaceObjectAtIndex:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP withObject:message];
             break;
+        case STATUS_MESSAGE_HOST_REACHABILITY:
+            _locationSentTimestamp = message;
+            [_messages replaceObjectAtIndex:STATUS_MESSAGE_HOST_REACHABILITY withObject:message];
+            break;
+//        case STATUS_MESSAGE_INTERNET_REACHABILITY:
+//            _locationSentTimestamp = message;
+//            [_messages replaceObjectAtIndex:STATUS_MESSAGE_INTERNET_REACHABILITY withObject:message];
+//            break;
+//        case STATUS_MESSAGE_WIFI_REACHABILITY:
+//            _locationSentTimestamp = message;
+//            [_messages replaceObjectAtIndex:STATUS_MESSAGE_WIFI_REACHABILITY withObject:message];
+//            break;
         default:
             DebugLog(@"undefined message type");
             break;

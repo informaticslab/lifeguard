@@ -39,9 +39,18 @@ AppManager *appMgr;
     
 }
 
+-(CLLocation *)getCurrentLocation
+{
+    
+    return appMgr.cdcLocator.userLocation;
+    
+    
+}
+
+
 -(void)sendLocation
 {
-    [self.lifeguardService sendLocation:[self getCurrentLocationCoordinates]];
+    [self.lifeguardService sendLocation:[self getCurrentLocation]];
 }
 
 
@@ -78,14 +87,16 @@ AppManager *appMgr;
 - (void)timerFired:(NSTimer *)timer {
     
     
-    CLLocationCoordinate2D currCoordinates = [self getCurrentLocationCoordinates];
+    CLLocation *location = [self getCurrentLocation];
+    CLLocationDegrees lat = location.coordinate.latitude;
+    CLLocationDegrees lng = location.coordinate.longitude;
     
     // do nothing if we do not have first valid location
-    if (self.haveFirstLocation == NO && currCoordinates.latitude == 0 && currCoordinates.longitude == 0)
+    if (self.haveFirstLocation == NO && lat == 0 && lng == 0)
         return;
     
     // if we just found first valid location
-    if (self.haveFirstLocation == NO && (currCoordinates.latitude != 0 || currCoordinates.longitude != 0)) {
+    if (self.haveFirstLocation == NO && (lat != 0 || lng != 0)) {
         
         // have valid location, stop fast first location timer
         // use slower update location timer
@@ -97,10 +108,10 @@ AppManager *appMgr;
     NSDate *now = [[NSDate alloc] init];
     
     // line for logging when using this AppDelegate location manager
-    DebugLog(@"fired at %@, lat/long = %f,%f", now, currCoordinates.latitude, currCoordinates.longitude);
+    DebugLog(@"fired at %@, lat/long = %f,%f", now, lat, lng);
     
      
-    [self.lifeguardService sendLocation:currCoordinates];
+    [self.lifeguardService sendLocation:location];
     
 }
 

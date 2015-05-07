@@ -17,7 +17,7 @@ AppManager *appMgr;
     
     self = [super init];
     self.dateFormat = [[NSDateFormatter alloc] init];
-    self.dateFormat.dateStyle = NSDateFormatterNoStyle;
+    self.dateFormat.dateStyle = NSDateFormatterShortStyle;
     self.dateFormat.timeStyle = NSDateFormatterShortStyle;
     
 
@@ -25,15 +25,22 @@ AppManager *appMgr;
 }
 
 
--(void)sendLocation:(CLLocationCoordinate2D)location;
+-(void)sendLocation:(CLLocation *)location
 {
+    CLLocationDegrees latitude = location.coordinate.latitude;
+    CLLocationDegrees longitude = location.coordinate.longitude;
     
     // check for valid location, don't report 0.0/0.0
-    if (location.latitude == 0 && location.longitude == 0) {
+    if (latitude == 0 && longitude == 0) {
         [self waitForLocation];
         return;
         
     }
+    
+    NSString *timestamp = [self.dateFormat stringFromDate:location.timestamp];
+    NSString *status = [NSString stringWithFormat:@"Last location collected %@.", timestamp];
+    [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_GPS_TIMESTAMP];
+    
     
     // create session with Lifeguard URL and session defaults
     NSDate *now = [[NSDate alloc] init];
@@ -41,13 +48,13 @@ AppManager *appMgr;
     
 //  NSString *urlWithParams = [NSString stringWithFormat:@"http://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
 //                               vendorId, floor([now timeIntervalSince1970]),
-//                               location.latitude, location.longitude];
+//                               latitude, longitude];
     NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
                                    vendorId, floor([now timeIntervalSince1970]),
-                                   location.latitude, location.longitude];
+                                   latitude, longitude];
     // NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
     //                           vendorId, floor([now timeIntervalSince1970]),
-    //                           location.latitude, location.longitude];
+    //                           latitude, longitude];
     DebugLog(@"Sending HTTP GET %@", urlWithParams);
     
     
@@ -106,8 +113,10 @@ AppManager *appMgr;
 {
     NSDate *now = [[NSDate alloc] init];
     NSString *dateString = [self.dateFormat stringFromDate:now];
-    NSString *status = [NSString stringWithFormat:@"Location successfully updated at %@.", dateString];
-    
+    NSString *status = [NSString stringWithFormat:@"Location updated at %@.", dateString];
+    [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
+
+
     DebugLog(@"update success: %@", status);
 
     self.statusString = status;
@@ -121,7 +130,7 @@ AppManager *appMgr;
     
     DebugLog(@"done waiting for location: %@", status);
     self.statusString = status;
-
+    [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
 }
 
 
