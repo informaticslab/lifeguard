@@ -269,9 +269,22 @@ AppManager *appMgr;
     
 }
 
+-(void)updateAppAuthorizationStatus
+{
+    NSString *status = @"";
+    
+    // set status string based on app location sharing authorization
+    if ([appMgr.cdcLocator isAppAuthorizedWithoutAlerts] == NO)
+        status = @"Lifeguard is not authorized to share location.";
+    
+    [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_LOCATION_SHARE_AUTHORIZATION];
+    
+}
+
 - (void)uiUpdateTimerFired:(NSTimer *)timer {
 
     // self.feedbackMsg.text = self.locUpdateTimer.lifeguardService.statusString;
+    [self updateAppAuthorizationStatus];
     self.feedbackMsg.text = [appMgr.statusMsgs getNextMessage];
     //DebugLog(@"UI Update Timer Fired");
 
@@ -280,7 +293,6 @@ AppManager *appMgr;
 
 -(void)sendLocation
 {
-    
     self.feedbackMsg.text = @"Sending location....";
     [self.locUpdateTimer sendLocation];
 
@@ -288,7 +300,9 @@ AppManager *appMgr;
 
 - (IBAction)btnSendLocationNowTouchUp:(id)sender {
 
-    [self sendLocation];
+    if ([appMgr.cdcLocator isAppAuthorizedWithAlerts]) {
+        [self sendLocation];
+    }
     
 }
 

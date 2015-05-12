@@ -21,6 +21,29 @@
     self.locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     
+    // if authorized status is Always or While Using the App
+    if ([self isAppAuthorizedWithAlerts]) {
+        
+        DebugLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
+        // This is the most important property to set for the manager. It ultimately determines how the manager will
+        // attempt to acquire location and thus, the amount of power that will be consumed.
+        _locationManager.desiredAccuracy = 50;
+        _locationManager.distanceFilter = 100;
+        
+        // Once configured, the location manager must be "started".
+        [_locationManager startUpdatingLocation];
+        
+        [self enterForegroundMode];
+    }
+    
+    return self;
+    
+}
+
+-(BOOL)isAppAuthorizedWithAlerts
+{
+    BOOL appAutorized = NO;
+    
     if ([CLLocationManager locationServicesEnabled] == NO) {
         DebugLog(@"Location Service are not enabled.");
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Location Services Disabled"
@@ -67,46 +90,50 @@
         
         
         // if authorized status is Always or While Using the App
-        if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-            
-            DebugLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
-            // This is the most important property to set for the manager. It ultimately determines how the manager will
-            // attempt to acquire location and thus, the amount of power that will be consumed.
-            _locationManager.desiredAccuracy = 50;
-            _locationManager.distanceFilter = 100;
-            
-            // Once configured, the location manager must be "started".
-            [_locationManager startUpdatingLocation];
-            
-            [self enterForegroundMode];
-        }
+        if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse)
+            appAutorized = YES;
+        
     }
-
-    return self;
     
+    return appAutorized;
 }
 
-//-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-//{
-//    //  store location data
-//    CLLocation *newLocation = [locations lastObject];
-//    self.userLocation = newLocation;
-//    self.locationTimestamp = newLocation.timestamp;
-//    
-//    DebugLog(@"didUpdateLocations called.");
-//    _updateLocationCount++;
-//    
-//    // tell the location manager to deferred location updates if in background
-//    if ((_inBackgroundMode == YES)  && (_areDeferringUpdates == NO) && (_updateLocationCount >= 10) )
-//    {
-//        DebugLog(@"in background and not deferring, so start deferred updates");
-//        _areDeferringUpdates = YES;
-//        _updateLocationCount = 0;
-//        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:60];
-//        
-//    }
-//}
-
+-(BOOL)isAppAuthorizedWithoutAlerts
+{
+    BOOL appAutorized = NO;
+    
+    if ([CLLocationManager locationServicesEnabled] == NO) {
+        DebugLog(@"Location Service are not enabled.");
+        
+    } else {
+        
+        // get authorization status
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        
+        // request authorization if has not been set as is the case after app installation
+        if ( status == kCLAuthorizationStatusNotDetermined) {
+            DebugLog(@"Core Location Authorization Status set to kCLAuthorizationStatusNotDetermined.");
+        }
+        
+        // if authorized setting is While Using the App, let user know app works better when setting is Always
+        else if (status == kCLAuthorizationStatusDenied) {
+            DebugLog(@"CDC Lifeguard Is Denied Location Access.");
+            
+        }
+        
+        else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            DebugLog(@"CDC Lifeguard Does Not Always Have Location Access.");
+            
+        }
+        
+        // if authorized status is Always or While Using the App
+        if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse)
+            appAutorized = YES;
+        
+    }
+    
+    return appAutorized;
+}
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -140,7 +167,7 @@
     //[_locationManager stopMonitoringSignificantLocationChanges];
     DebugLog(@"entering foreground mode..");
     [_locationManager stopUpdatingLocation];
-
+    
     // only report to location manager if the user has traveled 50 meters
     _locationManager.distanceFilter = 50.0f;
     _locationManager.delegate = self;
@@ -179,5 +206,29 @@
     [_locationManager startUpdatingLocation];
     
 }
+
+
+//-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//{
+//    //  store location data
+//    CLLocation *newLocation = [locations lastObject];
+//    self.userLocation = newLocation;
+//    self.locationTimestamp = newLocation.timestamp;
+//
+//    DebugLog(@"didUpdateLocations called.");
+//    _updateLocationCount++;
+//
+//    // tell the location manager to deferred location updates if in background
+//    if ((_inBackgroundMode == YES)  && (_areDeferringUpdates == NO) && (_updateLocationCount >= 10) )
+//    {
+//        DebugLog(@"in background and not deferring, so start deferred updates");
+//        _areDeferringUpdates = YES;
+//        _updateLocationCount = 0;
+//        [self.locationManager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:60];
+//
+//    }
+//}
+
+
 
 @end

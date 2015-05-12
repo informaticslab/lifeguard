@@ -26,6 +26,8 @@
 -(void)enterForegroundMode;
 -(void)enterBackgroundMode;
 -(void)enterDeferredUpdateBackgroundMode;
+-(BOOL)isAppAuthorizedWithAlerts;
+-(BOOL)isAppAuthorizedWithoutAlerts;
 
 
 @end

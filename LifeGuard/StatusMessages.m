@@ -73,6 +73,10 @@
             _locationSentTimestamp = message;
             [_messages replaceObjectAtIndex:STATUS_MESSAGE_HOST_REACHABILITY withObject:message];
             break;
+        case STATUS_MESSAGE_LOCATION_SHARE_AUTHORIZATION:
+            _locationShareAuthorization = message;
+            [_messages replaceObjectAtIndex:STATUS_MESSAGE_LOCATION_SHARE_AUTHORIZATION withObject:message];
+            break;
 //        case STATUS_MESSAGE_INTERNET_REACHABILITY:
 //            _locationSentTimestamp = message;
 //            [_messages replaceObjectAtIndex:STATUS_MESSAGE_INTERNET_REACHABILITY withObject:message];

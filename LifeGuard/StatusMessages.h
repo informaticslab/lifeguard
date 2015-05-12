@@ -16,13 +16,15 @@
 #define STATUS_MESSAGE_WIFI_REACHABILITY 2
 #define STATUS_MESSAGE_GPS_TIMESTAMP 3
 #define STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP 4
-#define STATUS_MESSAGE_SIZE 5
+#define STATUS_MESSAGE_LOCATION_SHARE_AUTHORIZATION 5
+#define STATUS_MESSAGE_SIZE 6
 
 @property(nonatomic, strong) NSMutableArray *messages;
 @property NSUInteger currMessageIndex;
 @property(nonatomic, strong) NSString *networkReachability;
 @property(nonatomic, strong) NSString *gpsTimestamp;
 @property(nonatomic, strong) NSString *locationSentTimestamp;
+@property(nonatomic, strong) NSString *locationShareAuthorization;
 
 -(void)setMessage:(NSString *)message forType:(int)type;
 -(NSString *)getNextMessage;
