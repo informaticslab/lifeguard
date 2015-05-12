@@ -8,34 +8,19 @@
 
 #import "AppManager.h"
 #import "AppDelegate.h"
-static AppManager *sharedAppManager = nil;
 
 @implementation AppManager
 
 
 #pragma mark Singleton Methods
-+ (id)singletonAppManager {
-	@synchronized(self) {
-		if(sharedAppManager == nil)
-			sharedAppManager = [[self alloc] init];
-	}
-    
-	return sharedAppManager;
-
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-	@synchronized(self) {
-		if(sharedAppManager == nil)  {
-			sharedAppManager = [super allocWithZone:zone];
-			return sharedAppManager;
-		}
-	}
-	return nil;
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-	return self;
++ (id)singletonAppManager
+{
+    static AppManager *sharedAppManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedAppManager = [[self alloc] init];
+    });
+    return sharedAppManager;
 }
 
 

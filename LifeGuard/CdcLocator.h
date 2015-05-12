@@ -11,18 +11,21 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import "LifeguardService.h"
 
 @interface CdcLocator : NSObject <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property BOOL isBackgroundMode;
-@property BOOL deferringUpdates;
+@property BOOL inBackgroundMode;
+@property BOOL areDeferringUpdates;
+@property NSUInteger updateLocationCount;
 @property CLLocation *userLocation;
+@property LifeguardService *lifeguardService;
 @property (nonatomic, weak) NSDate *locationTimestamp;
 
 -(void)enterForegroundMode;
 -(void)enterBackgroundMode;
+-(void)enterDeferredUpdateBackgroundMode;
 
 
 @end

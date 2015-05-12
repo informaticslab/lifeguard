@@ -52,15 +52,16 @@ AppManager *appMgr;
 
 -(void)applicationWillEnterForeground:(UIApplication *)application {
     
-    [appMgr.cdcLocator enterForegroundMode];
+//    [appMgr.cdcLocator enterForegroundMode];
     DebugLog(@"application entering foreground..");
     
 }
 
--(void)applicationDidEnterBackground:(UIApplication *)application {
+-(void)applicationWillResignActive:(UIApplication *)application {
     
     [appMgr.cdcLocator enterBackgroundMode];
     DebugLog(@"application entering background..");
+//    [appMgr.cdcLocator enterDeferredUpdateBackgroundMode];
     
 }
 
