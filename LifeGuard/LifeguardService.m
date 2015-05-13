@@ -38,7 +38,7 @@ AppManager *appMgr;
     }
     
     NSString *timestamp = [self.dateFormat stringFromDate:location.timestamp];
-    NSString *status = [NSString stringWithFormat:@"Location retrieved from GPS %@", timestamp];
+    NSString *status = [NSString stringWithFormat:@"Location from at GPS %@", timestamp];
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_GPS_TIMESTAMP];
     
     
@@ -46,12 +46,12 @@ AppManager *appMgr;
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
-//  NSString *urlWithParams = [NSString stringWithFormat:@"http://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
-//                               vendorId, floor([now timeIntervalSince1970]),
-//                               latitude, longitude];
-    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
-                                   vendorId, floor([now timeIntervalSince1970]),
-                                   latitude, longitude];
+    NSString *urlWithParams = [NSString stringWithFormat:@"http://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
+                               vendorId, floor([now timeIntervalSince1970]),
+                               latitude, longitude];
+//    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
+//                                   vendorId, floor([now timeIntervalSince1970]),
+//                                   latitude, longitude];
     // NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
     //                           vendorId, floor([now timeIntervalSince1970]),
     //                           latitude, longitude];

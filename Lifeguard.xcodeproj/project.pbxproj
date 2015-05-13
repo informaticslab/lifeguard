@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6AE1AF94E9100807A4C /* AppManager.m */; };
-		A601B6B11AF9529D00807A4C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A601B6B01AF9529D00807A4C /* Settings.bundle */; };
 		A601B6B41AFA231A00807A4C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6B31AFA231A00807A4C /* Reachability.m */; };
 		A601B6B71AFA27A300807A4C /* StatusMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6B61AFA27A300807A4C /* StatusMessages.m */; };
 		A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = A60DC7811ADC2D0700E4E395 /* privacy.html */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		A601B6AD1AF94E9100807A4C /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		A601B6AE1AF94E9100807A4C /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
-		A601B6B01AF9529D00807A4C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A601B6B21AFA231A00807A4C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A601B6B31AFA231A00807A4C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A601B6B51AFA27A300807A4C /* StatusMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusMessages.h; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 		A6DE6BF71ACDE03300FAADCE = {
 			isa = PBXGroup;
 			children = (
-				A601B6B01AF9529D00807A4C /* Settings.bundle */,
 				A6DE6C021ACDE03300FAADCE /* Lifeguard */,
 				A6DE6C1C1ACDE03300FAADCE /* LifeguardTests */,
 				A6DE6C011ACDE03300FAADCE /* Products */,
@@ -277,7 +274,6 @@
 				A60DC78C1ADC321300E4E395 /* privacy-icon.png in Resources */,
 				A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */,
 				A6DE6C111ACDE03300FAADCE /* Images.xcassets in Resources */,
-				A601B6B11AF9529D00807A4C /* Settings.bundle in Resources */,
 				A60DC78E1ADC321300E4E395 /* help-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
