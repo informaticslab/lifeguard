@@ -38,7 +38,7 @@ AppManager *appMgr;
     }
     
     NSString *timestamp = [self.dateFormat stringFromDate:location.timestamp];
-    NSString *status = [NSString stringWithFormat:@"Location from at GPS %@", timestamp];
+    NSString *status = [NSString stringWithFormat:@"Location from GPS at %@", timestamp];
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_GPS_TIMESTAMP];
     
     

@@ -29,12 +29,18 @@
         // attempt to acquire location and thus, the amount of power that will be consumed.
         _locationManager.desiredAccuracy = 50;
         _locationManager.distanceFilter = 100;
+        if ([_locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
+            [_locationManager setAllowsBackgroundLocationUpdates:YES];
+            _locationManager.pausesLocationUpdatesAutomatically = NO;
+
+        }
         
         // Once configured, the location manager must be "started".
         [_locationManager startUpdatingLocation];
         
         [self enterForegroundMode];
     }
+    
     
     return self;
     
