@@ -3,14 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Untitled Document</title>
-</head>
+<script type="text/javascript">
+    function insertVersion (version) {
+        document.getElementById('appver').textContent= "Version: " + version;
+    }
+</script>
 
+</head>
 <body>
 
 <div style="width:auto; padding:20px; font-size:16px; line-height:22px; font-family:Helvetica, Arial, sans-serif;">
+    <img src="about-us-icon.png" style="float:left;margin:0 20px 0 0;"/>
+    <span style="font-size:16px; position:relative; top:1px;"><strong>CDC Lifeguard for iOS</strong></span><br/>
+    <span style="font-size:14px; position:relative; top:1px;" id="appver"></span>
+</div>
 
-<p><img src="about-us-icon.png" width="100" height="100" style="float:left; margin: 0 20px 0 0;"><strong>CDC Lifeguard for iOS Version 0.4.1 Build (1)</strong></p>
- <p>&nbsp;</p>
+<div style="width:auto; padding:20px; font-size:16px; line-height:22px; font-family:Helvetica, Arial, sans-serif;">
 <p style="padding-top:2px;">Developed by the Informatics Innovation Unit in collaboration with Division of Emergency Operations</p>
 </br>
 

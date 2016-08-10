@@ -7,9 +7,12 @@
 //
 
 #import "AboutUsViewController.h"
-
+#import "AppManager.h"
 
 @implementation AboutUsViewController
+
+AppManager *appMgr;
+
 
 - (void)viewDidLoad {
     
@@ -23,11 +26,19 @@
     NSString *html = [NSString stringWithContentsOfFile:path
                                                encoding:NSUTF8StringEncoding
                                                   error:NULL];
-    
+    self.webView.delegate = self;
     [self.webView loadHTMLString:html baseURL:url];
+    appMgr = [AppManager singletonAppManager];
     
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
     
+    NSString *ver = [appMgr getAppVersion];
+    NSString *js_func_call = [NSString stringWithFormat:@"insertVersion(\"%@\")", ver];
+    [self.webView stringByEvaluatingJavaScriptFromString:js_func_call];
     
+
 }
 
 - (void)didReceiveMemoryWarning {

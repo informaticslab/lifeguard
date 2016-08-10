@@ -11,6 +11,8 @@
 #import "Debug.h"
 #import "CdcLocator.h"
 #import "AppManager.h"
+#import "WPSAlertController.h"
+
 
 @implementation CdcLocator
 
@@ -27,7 +29,7 @@
         DebugLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
         // This is the most important property to set for the manager. It ultimately determines how the manager will
         // attempt to acquire location and thus, the amount of power that will be consumed.
-        _locationManager.desiredAccuracy = 50;
+        _locationManager.desiredAccuracy = 100;
         _locationManager.distanceFilter = 100;
         if ([_locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
             [_locationManager setAllowsBackgroundLocationUpdates:YES];
@@ -48,16 +50,14 @@
 
 -(BOOL)isAppAuthorizedWithAlerts
 {
-    BOOL appAutorized = NO;
+    BOOL appAuthorized = NO;
     
     if ([CLLocationManager locationServicesEnabled] == NO) {
         DebugLog(@"Location Service are not enabled.");
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Location Services Disabled"
-                                                       message:@"Location Services must be enabled for CDC Lifeguard to report your location. Please go to Settings > Privacy > Location Services and turn on Location Services."
-                                                      delegate:nil
-                                             cancelButtonTitle:@"OK"
-                                             otherButtonTitles:nil, nil];
-        [alert show];
+        
+        
+        [WPSAlertController presentOkayAlertWithTitle:@"Location Services Disabled" message:@"Location Services must be enabled for CDC Lifeguard to report your location. Please go to Settings > Privacy > Location Services and turn on Location Services."];
+
         
     } else {
         
@@ -74,34 +74,27 @@
         // if authorized setting is While Using the App, let user know app works better when setting is Always
         else if (status == kCLAuthorizationStatusDenied) {
             DebugLog(@"CDC Lifeguard Is Denied Location Access.");
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"CDC Lifeguard Denied Location Access"
-                                                           message:@"CDC Lifeguard has been denied access to your location. In order to report your location go to Settings > Privacy > Location Services, select CDC Lifeguard and then select Always. See Help for more information."
-                                                          delegate:nil
-                                                 cancelButtonTitle:@"OK"
-                                                 otherButtonTitles:nil, nil];
-            [alert show];
+            
+            [WPSAlertController presentOkayAlertWithTitle:@"CDC Lifeguard Denied Location Access" message:@"CDC Lifeguard has been denied access to your location. In order to report your location go to Settings > Privacy > Location Services, select CDC Lifeguard and then select Always. See Help for more information."];
+
             
         }
         
         else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
             DebugLog(@"CDC Lifeguard Does Not Always Have Location Access.");
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"CDC Lifeguard Does Not Always Have Location Access"
-                                                           message:@"CDC Lifeguard does not have access to your location when the app is running in the background. In order to report your location when the app is in the background go to Settings > Privacy > Location Services, select CDC Lifeguard and then select Always. See Help for more information."
-                                                          delegate:nil
-                                                 cancelButtonTitle:@"OK"
-                                                 otherButtonTitles:nil, nil];
-            [alert show];
             
+            [WPSAlertController presentOkayAlertWithTitle:@"CDC Lifeguard Does Not Always Have Location Access" message:@"CDC Lifeguard does not have access to your location when the app is running in the background. In order to report your location when the app is in the background go to Settings > Privacy > Location Services, select CDC Lifeguard and then select Always. See Help for more information."];
+
         }
         
         
         // if authorized status is Always or While Using the App
         if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse)
-            appAutorized = YES;
+            appAuthorized = YES;
         
     }
     
-    return appAutorized;
+    return appAuthorized;
 }
 
 -(BOOL)isAppAuthorizedWithoutAlerts
@@ -156,8 +149,6 @@
 }
 
 
-
-
 - (void) locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error
 {
     if (error) {
@@ -167,6 +158,7 @@
         [self.lifeguardService sendLocation:_userLocation];
     }
 }
+
 
 -(void)enterForegroundMode
 {

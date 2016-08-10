@@ -9,6 +9,7 @@
 #import "LocatorViewController.h"
 #import "AppManager.h"
 #import "Reachability.h"
+#import "WPSAlertController.h"
 
 @interface LocatorViewController ()
 
@@ -209,7 +210,7 @@ AppManager *appMgr;
     [picker setSubject:@"Lifeguard iOS Device ID"];
     
     // Set up recipients
-    NSArray *toRecipients = [NSArray arrayWithObject:@"gsledbetter@gmail.com"];
+    NSArray *toRecipients = [NSArray arrayWithObject:@"deodeployequip@cdc.gov"];
     
     [picker setToRecipients:toRecipients];
     NSString *bodyPreamble = @"Listed below is the device ID that will be used by the Lifeguard for iOS app for the originator of this email:";
@@ -263,8 +264,8 @@ AppManager *appMgr;
         [[UIApplication sharedApplication] openURL:phoneUrl];
     } else
     {
-        UIAlertView *calert = [[UIAlertView alloc]initWithTitle:@"Device Can't Complete Call" message:@"This device's call facility is not available." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [calert show];
+        [WPSAlertController presentOkayAlertWithTitle:@"Device Can't Complete Call" message:@"This device's call facility is not available."];
+
     }
     
 }
