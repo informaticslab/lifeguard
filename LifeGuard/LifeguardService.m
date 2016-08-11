@@ -29,6 +29,7 @@ AppManager *appMgr;
 {
     CLLocationDegrees latitude = location.coordinate.latitude;
     CLLocationDegrees longitude = location.coordinate.longitude;
+    NSString *urlWithParams = @"";
     
     // check for valid location, don't report 0.0/0.0
     if (latitude == 0 && longitude == 0) {
@@ -46,15 +47,19 @@ AppManager *appMgr;
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
-//    NSString *urlWithParams = [NSString stringWithFormat:@"https://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
-//                               vendorId, floor([now timeIntervalSince1970]),
-//                               latitude, longitude];
-    NSString *urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useTestServer"]) {
+
+        urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
                                    vendorId, floor([now timeIntervalSince1970]),
                                    latitude, longitude];
-    // NSString *urlWithParams = [NSString stringWithFormat:@"http://127.0.0.1:5000/location?p=%@&t=%.0f&lat=%f&long=%f",
-    //                           vendorId, floor([now timeIntervalSince1970]),
-    //                           latitude, longitude];
+
+    } else {
+        urlWithParams = [NSString stringWithFormat:@"https://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
+                                       vendorId, floor([now timeIntervalSince1970]),
+                                       latitude, longitude];
+        
+    }
+    
     DebugLog(@"Sending HTTP GET %@", urlWithParams);
     
     

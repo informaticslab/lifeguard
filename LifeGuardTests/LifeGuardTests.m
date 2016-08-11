@@ -1,19 +1,18 @@
 //
-//  LifeGuardTests.m
-//  LifeGuardTests
+//  LifeguardTests.m
+//  LifeguardTests
 //
-//  Created by jtq6 on 4/2/15.
-//  Copyright (c) 2015 CDC. All rights reserved.
+//  Created by Greg Ledbetter on 8/10/16.
+//  Copyright © 2016 CDC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface LifeGuardTests : XCTestCase
+@interface LifeguardTests : XCTestCase
 
 @end
 
-@implementation LifeGuardTests
+@implementation LifeguardTests
 
 - (void)setUp {
     [super setUp];
@@ -27,7 +26,7 @@
 
 - (void)testExample {
     // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
 - (void)testPerformanceExample {

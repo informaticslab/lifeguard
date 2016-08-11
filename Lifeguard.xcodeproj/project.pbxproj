@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		377FB9D31D5CEC9100C5742C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 377FB9D21D5CEC9100C5742C /* Settings.bundle */; };
 		37B4FF7F1D5B814500595984 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B4FF7E1D5B814500595984 /* AlertHelper.m */; };
 		37B4FF821D5B84D400595984 /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B4FF811D5B84D400595984 /* WPSAlertController.m */; };
 		A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6AE1AF94E9100807A4C /* AppManager.m */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		377FB9D21D5CEC9100C5742C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		37B4FF7E1D5B814500595984 /* AlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertHelper.m; sourceTree = "<group>"; };
 		37B4FF801D5B82A200595984 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
 		37B4FF811D5B84D400595984 /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		A6DE6BF71ACDE03300FAADCE = {
 			isa = PBXGroup;
 			children = (
+				377FB9D21D5CEC9100C5742C /* Settings.bundle */,
 				A6DE6C021ACDE03300FAADCE /* Lifeguard */,
 				A6DE6C1C1ACDE03300FAADCE /* LifeguardTests */,
 				37B4FF891D5BAA2E00595984 /* LifeguardTests */,
@@ -253,6 +256,7 @@
 				A60DC78C1ADC321300E4E395 /* privacy-icon.png in Resources */,
 				A60DC7841ADC2D0700E4E395 /* privacy.html in Resources */,
 				A6DE6C111ACDE03300FAADCE /* Images.xcassets in Resources */,
+				377FB9D31D5CEC9100C5742C /* Settings.bundle in Resources */,
 				A60DC78E1ADC321300E4E395 /* help-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
