@@ -20,11 +20,5 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location is required to allow CDC to assist you during emergency situations. </string>
-	<key>NSLocationUsageDescription</key>
-	<string>Location is required to allow CDC to assist you during emergency situations. </string>
 </dict>
 </plist>
