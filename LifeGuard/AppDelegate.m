@@ -28,25 +28,12 @@ AppManager *appMgr;
     // Background App Refresh in Settings->General must be enabled for location updates to work in the background
     if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied){
         
-//        alert = [[UIAlertView alloc]initWithTitle:@""
-//                                          message:@"CDC Lifeguard is most effective when the Background App Refresh is enabled. To turn it on, go to Settings > General > Background App Refresh."
-//                                         delegate:nil
-//                                cancelButtonTitle:@"Ok"
-//                                otherButtonTitles:nil, nil];
-//        [alert show];
         
         [WPSAlertController presentOkayAlertWithTitle:@"Warning" message:@"CDC Lifeguard is most effective when the Background App Refresh is enabled. To turn it on, go to Settings > General > Background App Refresh."];
         
         
         
     } else if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusRestricted){
-        
-//        alert = [[UIAlertView alloc]initWithTitle:@""
-//                                          message:@"CDC Lifeguard is limited because the Background App Refresh is disabled."
-//                                         delegate:nil
-//                                cancelButtonTitle:@"Ok"
-//                                otherButtonTitles:nil, nil];
-//        [alert show];
         
         
         [WPSAlertController presentOkayAlertWithTitle:@"Warning" message:@"CDC Lifeguard is limited because the Background App Refresh is disabled."];

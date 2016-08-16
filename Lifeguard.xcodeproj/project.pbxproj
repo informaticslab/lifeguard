@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		377FB9D31D5CEC9100C5742C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 377FB9D21D5CEC9100C5742C /* Settings.bundle */; };
-		37B4FF7F1D5B814500595984 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B4FF7E1D5B814500595984 /* AlertHelper.m */; };
 		37B4FF821D5B84D400595984 /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B4FF811D5B84D400595984 /* WPSAlertController.m */; };
 		A601B6AF1AF94E9100807A4C /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6AE1AF94E9100807A4C /* AppManager.m */; };
 		A601B6B41AFA231A00807A4C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A601B6B31AFA231A00807A4C /* Reachability.m */; };
@@ -34,8 +33,6 @@
 
 /* Begin PBXFileReference section */
 		377FB9D21D5CEC9100C5742C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		37B4FF7E1D5B814500595984 /* AlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertHelper.m; sourceTree = "<group>"; };
-		37B4FF801D5B82A200595984 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
 		37B4FF811D5B84D400595984 /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 		37B4FF831D5B850B00595984 /* WPSAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
 		37B4FF8A1D5BAA2E00595984 /* LifeguardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeguardTests.m; sourceTree = "<group>"; };
@@ -123,7 +120,6 @@
 				A60DC7831ADC2D0700E4E395 /* about-us.html */,
 				A60DC7911ADC349F00E4E395 /* AboutUsViewController.h */,
 				A60DC78F1ADC342200E4E395 /* AboutUsViewController.m */,
-				37B4FF7E1D5B814500595984 /* AlertHelper.m */,
 				A6DE6C071ACDE03300FAADCE /* AppDelegate.h */,
 				A6DE6C081ACDE03300FAADCE /* AppDelegate.m */,
 				A601B6AD1AF94E9100807A4C /* AppManager.h */,
@@ -151,7 +147,6 @@
 				A601B6B51AFA27A300807A4C /* StatusMessages.h */,
 				A601B6B61AFA27A300807A4C /* StatusMessages.m */,
 				A6DE6C031ACDE03300FAADCE /* Supporting Files */,
-				37B4FF801D5B82A200595984 /* AlertHelper.h */,
 				37B4FF811D5B84D400595984 /* WPSAlertController.m */,
 				37B4FF831D5B850B00595984 /* WPSAlertController.h */,
 			);
@@ -271,7 +266,6 @@
 				A68232DB1AD5B18300E16249 /* LifeguardService.m in Sources */,
 				A6FD54A61ACEEED6001634A8 /* LocationUpdateTimer.m in Sources */,
 				A691DB761AD5754000FE93B9 /* PrivacyInfoViewController.m in Sources */,
-				37B4FF7F1D5B814500595984 /* AlertHelper.m in Sources */,
 				A6DE6C091ACDE03300FAADCE /* AppDelegate.m in Sources */,
 				37B4FF821D5B84D400595984 /* WPSAlertController.m in Sources */,
 				A60DC7941ADC352E00E4E395 /* HelpViewController.m in Sources */,
