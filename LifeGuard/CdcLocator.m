@@ -50,9 +50,9 @@
     _locationManager.desiredAccuracy = 100;
     _locationManager.distanceFilter = 100;
     _locationManager.activityType = CLActivityTypeOther;
+    _locationManager.pausesLocationUpdatesAutomatically = NO;
     if ([_locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
         [_locationManager setAllowsBackgroundLocationUpdates:YES];
-        _locationManager.pausesLocationUpdatesAutomatically = NO;
         
     }
     
