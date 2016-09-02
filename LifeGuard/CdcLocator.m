@@ -16,6 +16,7 @@
 
 @implementation CdcLocator
 
+#define DESIRED_ACCURAC
 
 -(id)init {
     
@@ -27,15 +28,7 @@
     if ([self isAppAuthorizedWithAlerts]) {
         
         DebugLog(@"Core Location Authorization Status set to kCLAuthorizationStatusAuthorizedAlways or kCLAuthorizationStatusAuthorizedWhenInUse.");
-        // This is the most important property to set for the manager. It ultimately determines how the manager will
-        // attempt to acquire location and thus, the amount of power that will be consumed.
-        _locationManager.desiredAccuracy = 100;
-        _locationManager.distanceFilter = 100;
-        if ([_locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
-            [_locationManager setAllowsBackgroundLocationUpdates:YES];
-            _locationManager.pausesLocationUpdatesAutomatically = NO;
-
-        }
+        [self setDefaultCLProperties];
         
         // Once configured, the location manager must be "started".
         [_locationManager startUpdatingLocation];
@@ -47,6 +40,25 @@
     return self;
     
 }
+
+-(void)setDefaultCLProperties
+{
+    
+    // This is the most important property to set for the manager. It ultimately determines how the manager will
+    // attempt to acquire location and thus, the amount of power that will be consumed.
+
+    _locationManager.desiredAccuracy = 100;
+    _locationManager.distanceFilter = 100;
+    _locationManager.activityType = CLActivityTypeOther;
+    if ([_locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
+        [_locationManager setAllowsBackgroundLocationUpdates:YES];
+        _locationManager.pausesLocationUpdatesAutomatically = NO;
+        
+    }
+    
+
+}
+
 
 -(BOOL)isAppAuthorizedWithAlerts
 {
@@ -167,9 +179,8 @@
     [_locationManager stopUpdatingLocation];
     
     // only report to location manager if the user has traveled 50 meters
-    _locationManager.distanceFilter = 50.0f;
-    _locationManager.delegate = self;
-    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    [self setDefaultCLProperties];
+
     _inBackgroundMode = NO;
     [_locationManager startUpdatingLocation];
     
@@ -180,10 +191,7 @@
     _inBackgroundMode = YES;
     
     [_locationManager stopUpdatingLocation];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
-    _locationManager.pausesLocationUpdatesAutomatically = NO;
-    _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    [self setDefaultCLProperties];
     [_locationManager startUpdatingLocation];
 }
 
