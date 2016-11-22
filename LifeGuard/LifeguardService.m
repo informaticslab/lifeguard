@@ -48,6 +48,19 @@ AppManager *appMgr;
     
 }
 
+-(NSString *)getRegistrationServiceUrl
+{
+    
+    NSString *serverUrl = [self getServerUrl];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useTestServer"])
+        return [NSString stringWithFormat:@"%@/register", serverUrl];
+    
+    else
+        return [NSString stringWithFormat:@"%@/lgregister   .aspx", serverUrl];
+    
+}
+
 
 -(NSString *)getStringTimestampFromLocation:(CLLocation *)location
 {
@@ -67,19 +80,34 @@ AppManager *appMgr;
     CLLocationDegrees latitude = location.coordinate.latitude;
     CLLocationDegrees longitude = location.coordinate.longitude;
     
-    
     // create session with Lifeguard URL and session defaults
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-    
-    
     NSString *urlWithParams = [NSString stringWithFormat:@"%@?p=%@&t=%.0f&lat=%f&long=%f",
-                         [self getServerUrl], vendorId, floor([now timeIntervalSince1970]),
+                         [self getLocationServiceUrl], vendorId, floor([now timeIntervalSince1970]),
                          latitude, longitude];
     
     return urlWithParams;
     
 }
+
+-(NSString *)getRegistrationServiceUrlParams:(NSString *)uid location:(CLLocation *)location
+{
+    
+    CLLocationDegrees latitude = location.coordinate.latitude;
+    CLLocationDegrees longitude = location.coordinate.longitude;
+    
+    // create session with Lifeguard URL and session defaults
+    NSDate *now = [[NSDate alloc] init];
+    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    NSString *urlWithParams = [NSString stringWithFormat:@"%@?uid=%@p=%@&t=%.0f&lat=%f&long=%f",
+                               [self getRegistrationServiceUrl], uid, vendorId, floor([now timeIntervalSince1970]),
+                               latitude, longitude];
+    
+    return urlWithParams;
+    
+}
+
 
 -(BOOL)locationIsValid:(CLLocation *)location
 {
@@ -97,16 +125,8 @@ AppManager *appMgr;
     
 }
 
-
--(void)sendLocation:(CLLocation *)location
+-(void)sendUrl:(NSString *)urlWithParams
 {
-    // if location is not valid do not send
-    if ([self locationIsValid:location] == NO)
-        return;
-    
-    NSString *urlWithParams = [self getLocationServiceUrlParams:location];
-    DebugLog(@"Sending HTTP GET %@", urlWithParams);
-    
     NSURL *url = [NSURL URLWithString:urlWithParams];
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -138,19 +158,49 @@ AppManager *appMgr;
         
         else {
             [self updateSuccess];
-
-        // otherwise, everything is probably fine and you should interpret the `data` contents
-        DebugLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            
+            // otherwise, everything is probably fine and you should interpret the `data` contents
+            DebugLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             
         }
         
         return;
-
+        
     }];
     
     [task resume];
-
+    
 }
+
+
+
+-(void)sendLocation:(CLLocation *)location
+{
+    // if location is not valid do not send
+    if ([self locationIsValid:location] == NO)
+        return;
+    
+    NSString *urlWithParams = [self getLocationServiceUrlParams:location];
+    DebugLog(@"Sending HTTP GET %@", urlWithParams);
+    
+    [self sendUrl:urlWithParams];
+    
+}
+
+-(void)sendRegistration:(NSString *)uid location:(CLLocation *)location
+{
+    // if location is not valid do not send
+    if ([self locationIsValid:location] == NO)
+        return;
+    
+    NSString *urlWithParams = [self getRegistrationServiceUrlParams:uid location:location];
+    DebugLog(@"Sending HTTP GET %@", urlWithParams);
+    
+    [self sendUrl:urlWithParams];
+    
+}
+
+
 
 
 -(void)updateSuccess
