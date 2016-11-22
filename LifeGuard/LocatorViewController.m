@@ -170,6 +170,31 @@ AppManager *appMgr;
 
 }
 
+- (IBAction)btnRegisterIphoneTouchUp:(id)sender {
+    
+    self.feedbackMsg.text = @"";
+    
+    
+    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Device ID"
+                                          message:vendorId
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   [alertController dismissViewControllerAnimated:YES completion:nil];
+                               }];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
 
 - (IBAction)btnEmailDeviceIdTouchUp:(id)sender {
     self.feedbackMsg.text = @"";

@@ -19,55 +19,96 @@ AppManager *appMgr;
     self.dateFormat = [[NSDateFormatter alloc] init];
     self.dateFormat.dateStyle = NSDateFormatterShortStyle;
     self.dateFormat.timeStyle = NSDateFormatterShortStyle;
-    
 
     return self;
 }
 
 
--(void)sendLocation:(CLLocation *)location
+-(NSString *)getServerUrl
 {
-    CLLocationDegrees latitude = location.coordinate.latitude;
-    CLLocationDegrees longitude = location.coordinate.longitude;
-    NSString *urlWithParams = @"";
     
-    // check for valid location, don't report 0.0/0.0
-    if (latitude == 0 && longitude == 0) {
-        [self waitForLocation];
-        return;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useTestServer"])
+        return @"https://desolate-river-2879.herokuapp.com";
+    else
+        return @"https://eocexternal.cdc.gov/Lifeguard";
+    
+}
+
+
+-(NSString *)getLocationServiceUrl
+{
+    
+    NSString *serverUrl = [self getServerUrl];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useTestServer"])
+        return [NSString stringWithFormat:@"%@/location", serverUrl];
         
-    }
+    else
+        return [NSString stringWithFormat:@"%@/lgService.aspx", serverUrl];
     
+}
+
+
+-(NSString *)getStringTimestampFromLocation:(CLLocation *)location
+{
+
     NSString *timestamp = [self.dateFormat stringFromDate:location.timestamp];
     NSString *status = [NSString stringWithFormat:@"Location from GPS at %@", timestamp];
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_GPS_TIMESTAMP];
+    
+    return timestamp;
+    
+}
+
+
+-(NSString *)getLocationServiceUrlParams:(CLLocation *)location
+{
+
+    CLLocationDegrees latitude = location.coordinate.latitude;
+    CLLocationDegrees longitude = location.coordinate.longitude;
     
     
     // create session with Lifeguard URL and session defaults
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useTestServer"]) {
+    
+    NSString *urlWithParams = [NSString stringWithFormat:@"%@?p=%@&t=%.0f&lat=%f&long=%f",
+                         [self getServerUrl], vendorId, floor([now timeIntervalSince1970]),
+                         latitude, longitude];
+    
+    return urlWithParams;
+    
+}
 
-        urlWithParams = [NSString stringWithFormat:@"https://desolate-river-2879.herokuapp.com/location?p=%@&t=%.0f&lat=%f&long=%f",
-                                   vendorId, floor([now timeIntervalSince1970]),
-                                   latitude, longitude];
-
-    } else {
-        urlWithParams = [NSString stringWithFormat:@"https://eocexternal.cdc.gov/Lifeguard/lgService.aspx?p=%@&t=%.0f&lat=%f&lng=%f",
-                                       vendorId, floor([now timeIntervalSince1970]),
-                                       latitude, longitude];
+-(BOOL)locationIsValid:(CLLocation *)location
+{
+    CLLocationDegrees latitude = location.coordinate.latitude;
+    CLLocationDegrees longitude = location.coordinate.longitude;
+    
+    // check for valid location, don't report 0.0/0.0
+    if (latitude == 0 && longitude == 0) {
+        [self showWaitForLocationStatus];
+        return NO;
         
     }
+
+    return YES;
     
+}
+
+
+-(void)sendLocation:(CLLocation *)location
+{
+    // if location is not valid do not send
+    if ([self locationIsValid:location] == NO)
+        return;
+    
+    NSString *urlWithParams = [self getLocationServiceUrlParams:location];
     DebugLog(@"Sending HTTP GET %@", urlWithParams);
-    
     
     NSURL *url = [NSURL URLWithString:urlWithParams];
     NSURLSession *session = [NSURLSession sharedSession];
-    
-    // NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    // NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
     // set request to be a GET
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -87,8 +128,6 @@ AppManager *appMgr;
             
             NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
             
-
-            
             if (statusCode != 200) {
                 DebugLog(@"dataTaskWithRequest HTTP status code: %ld", (long)statusCode);
                 self.statusString = [NSString stringWithFormat:@"HTTP error code %ld occurred.", (long)statusCode];
@@ -107,29 +146,29 @@ AppManager *appMgr;
         
         return;
 
-        
     }];
     
     [task resume];
+
 }
 
 
 -(void)updateSuccess
 {
+    
     NSDate *now = [[NSDate alloc] init];
     NSString *dateString = [self.dateFormat stringFromDate:now];
     NSString *status = [NSString stringWithFormat:@"Location sent at %@", dateString];
+    
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
-
-
     DebugLog(@"update success: %@", status);
 
     self.statusString = status;
 
-    
 }
 
--(void)waitForLocation
+
+-(void)showWaitForLocationStatus
 {
     NSString *status = [NSString stringWithFormat:@"Waiting for valid location..."];
     
