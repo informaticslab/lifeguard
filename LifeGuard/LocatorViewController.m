@@ -185,6 +185,15 @@ AppManager *appMgr;
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.borderStyle = UITextBorderStyleRoundedRect;
     }];
+    [alertController addAction:[UIAlertAction
+                                actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                style:UIAlertActionStyleCancel
+                                handler:^(UIAlertAction *action)
+                                {
+                                    [alertController dismissViewControllerAnimated:YES completion:nil];
+                                }]];
+    
+
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSArray *textfields = alertController.textFields;
         UITextField *userName = textfields[0];
