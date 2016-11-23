@@ -26,6 +26,7 @@
 - (void)startLocationUpdateTimer;
 - (void)stopTimer;
 -(void)sendLocation;
+-(void)sendRegistration:(NSString *)uid;
 
 @end
 

@@ -53,6 +53,13 @@ AppManager *appMgr;
     [self.lifeguardService sendLocation:[self getCurrentLocation]];
 }
 
+-(void)sendRegistration:(NSString *)uid
+{
+    
+    [self.lifeguardService sendRegistration:uid location:[self getCurrentLocation]];
+
+}
+
 
 - (void)startFirstLocationTimer {
     if (!self.timer) {
@@ -63,6 +70,7 @@ AppManager *appMgr;
                                                      repeats:YES];
     }
 }
+
 
 - (void)startLocationUpdateTimer {
     if (!self.timer) {

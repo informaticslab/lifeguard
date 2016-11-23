@@ -77,6 +77,14 @@
             _locationShareAuthorization = message;
             [_messages replaceObjectAtIndex:STATUS_MESSAGE_LOCATION_SHARE_AUTHORIZATION withObject:message];
             break;
+        case STATUS_MESSAGE_REGISTRATION_USER_NAME:
+            _registrationUserName = message;
+            [_messages replaceObjectAtIndex:STATUS_MESSAGE_REGISTRATION_USER_NAME withObject:message];
+            break;
+        case STATUS_MESSAGE_REGISTRATION_VENDOR_ID:
+            _registrationVendorId = message;
+            [_messages replaceObjectAtIndex:STATUS_MESSAGE_REGISTRATION_VENDOR_ID withObject:message];
+            break;
 //        case STATUS_MESSAGE_INTERNET_REACHABILITY:
 //            _locationSentTimestamp = message;
 //            [_messages replaceObjectAtIndex:STATUS_MESSAGE_INTERNET_REACHABILITY withObject:message];

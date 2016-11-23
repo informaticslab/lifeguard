@@ -18,6 +18,7 @@
 @property(nonatomic, strong) NSString *statusString;
 @property(nonatomic, strong) NSDateFormatter *dateFormat;
 -(void)sendLocation:(CLLocation *)location;
+-(void)sendRegistration:(NSString *)uid location:(CLLocation *)location;
 
 @end
 #endif

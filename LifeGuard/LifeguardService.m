@@ -13,6 +13,7 @@
 
 AppManager *appMgr;
 
+
 -(id)init {
     
     self = [super init];
@@ -47,6 +48,7 @@ AppManager *appMgr;
         return [NSString stringWithFormat:@"%@/lgService.aspx", serverUrl];
     
 }
+
 
 -(NSString *)getRegistrationServiceUrl
 {
@@ -91,6 +93,7 @@ AppManager *appMgr;
     
 }
 
+
 -(NSString *)getRegistrationServiceUrlParams:(NSString *)uid location:(CLLocation *)location
 {
     
@@ -129,6 +132,9 @@ AppManager *appMgr;
 {
     NSURL *url = [NSURL URLWithString:urlWithParams];
     NSURLSession *session = [NSURLSession sharedSession];
+    
+    DebugLog(@"Sending HTTP GET %@", urlWithParams);
+
     
     // set request to be a GET
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -173,7 +179,6 @@ AppManager *appMgr;
 }
 
 
-
 -(void)sendLocation:(CLLocation *)location
 {
     // if location is not valid do not send
@@ -181,26 +186,18 @@ AppManager *appMgr;
         return;
     
     NSString *urlWithParams = [self getLocationServiceUrlParams:location];
-    DebugLog(@"Sending HTTP GET %@", urlWithParams);
-    
     [self sendUrl:urlWithParams];
     
 }
+
 
 -(void)sendRegistration:(NSString *)uid location:(CLLocation *)location
 {
-    // if location is not valid do not send
-    if ([self locationIsValid:location] == NO)
-        return;
     
     NSString *urlWithParams = [self getRegistrationServiceUrlParams:uid location:location];
-    DebugLog(@"Sending HTTP GET %@", urlWithParams);
-    
     [self sendUrl:urlWithParams];
     
 }
-
-
 
 
 -(void)updateSuccess
@@ -226,7 +223,6 @@ AppManager *appMgr;
     self.statusString = status;
     [appMgr.statusMsgs setMessage:status forType:STATUS_MESSAGE_LOCATION_SENT_TIMESTAMP];
 }
-
 
 
 @end

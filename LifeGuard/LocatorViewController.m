@@ -43,7 +43,7 @@ AppManager *appMgr;
     self.btnAboutUs.backgroundColor = btnBackground;
     self.btnHelp.backgroundColor = btnBackground;
 
-    self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:3
+    self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:4
                                                  target:self
                                                selector:@selector(uiUpdateTimerFired:)
                                                userInfo:nil
@@ -149,7 +149,6 @@ AppManager *appMgr;
 
     self.feedbackMsg.text = @"";
 
-    
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     
     UIAlertController *alertController = [UIAlertController
@@ -170,27 +169,32 @@ AppManager *appMgr;
 
 }
 
+
 - (IBAction)btnRegisterIphoneTouchUp:(id)sender {
     
-    self.feedbackMsg.text = @"";
-    
-    
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-    
-    UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"Device ID"
-                                          message:vendorId
-                                          preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                               style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction *action)
-                               {
-                                   [alertController dismissViewControllerAnimated:YES completion:nil];
-                               }];
-    
-    [alertController addAction:okAction];
-    
+
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle: @"Register iPhone"
+                                                                              message: @"Input CDC User Name"
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"CDC User Name";
+        textField.textColor = [UIColor blueColor];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+    }];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray *textfields = alertController.textFields;
+        UITextField *userId = textfields[0];
+        self.feedbackMsg.text = @"Sending registration....";
+        [self.locUpdateTimer sendRegistration:userId.text];
+        [appMgr.statusMsgs setMessage:[NSString stringWithFormat:@"Registered for user %@ with device ID ...",userId.text] forType:STATUS_MESSAGE_REGISTRATION_USER_NAME];
+        [appMgr.statusMsgs setMessage:[NSString stringWithFormat:@"%@",vendorId] forType:STATUS_MESSAGE_REGISTRATION_VENDOR_ID];
+        
+
+        
+    }]];
     [self presentViewController:alertController animated:YES completion:nil];
     
 }
@@ -220,10 +224,8 @@ AppManager *appMgr;
         
         [self presentViewController:alertController animated:YES completion:nil];
         
-
     }
 
-    
 }
 
 - (void)displayMailComposerSheet
@@ -323,6 +325,7 @@ AppManager *appMgr;
     [self.locUpdateTimer sendLocation];
 
 }
+
 
 - (IBAction)btnSendLocationNowTouchUp:(id)sender {
 
