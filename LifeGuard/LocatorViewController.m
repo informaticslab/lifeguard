@@ -58,7 +58,10 @@ AppManager *appMgr;
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
     
+    
 }
+
+
 
 /*
  * Called by Reachability whenever status changes.
@@ -172,8 +175,6 @@ AppManager *appMgr;
 
 - (IBAction)btnRegisterIphoneTouchUp:(id)sender {
     
-    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle: @"Register iPhone"
                                                                               message: @"Input CDC User Name"
@@ -186,12 +187,23 @@ AppManager *appMgr;
     }];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSArray *textfields = alertController.textFields;
-        UITextField *userId = textfields[0];
+        UITextField *userName = textfields[0];
         self.feedbackMsg.text = @"Sending registration....";
-        [self.locUpdateTimer sendRegistration:userId.text];
-        [appMgr.statusMsgs setMessage:[NSString stringWithFormat:@"Registered for user %@ with device ID ...",userId.text] forType:STATUS_MESSAGE_REGISTRATION_USER_NAME];
-        [appMgr.statusMsgs setMessage:[NSString stringWithFormat:@"%@",vendorId] forType:STATUS_MESSAGE_REGISTRATION_VENDOR_ID];
+        [self.locUpdateTimer sendRegistration:userName.text];
+        [appMgr.statusMsgs setMessage:[NSString stringWithFormat:@"Registered for user %@ with device ID ...",userName.text] forType:STATUS_MESSAGE_REGISTRATION_USER_NAME];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *registeredUserName = (NSString *)[defaults objectForKey:@"registeredUserName"];
         
+        
+        // was the version number the last time EULA was seen and agreed to the
+        // same as the current version, if not show EULA and store the version number
+        if (![userName.text isEqualToString:registeredUserName]) {
+            [defaults setObject:userName.text forKey:@"registeredUserName"];
+            [defaults synchronize];
+            NSLog(@"Registered user name = %@ saved to user defaults", userName.text);
+            
+        }
+
 
         
     }]];

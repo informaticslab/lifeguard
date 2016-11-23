@@ -8,6 +8,7 @@
 
 #import "StatusMessages.h"
 #import "Debug.h"
+#import "AppManager.h"
 
 @implementation StatusMessages
 
@@ -22,6 +23,23 @@
         }
         _currMessageIndex = 0;
     }
+    
+    // get registered user name for scrolling messages
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *registeredUserName = (NSString *)[defaults objectForKey:@"registeredUserName"];
+    
+    // set registered user name message
+    if (registeredUserName == nil)
+        _registrationUserName = @"No user is registered with device ID ...";
+    else
+        _registrationUserName = [NSString stringWithFormat:@"Registered for user %@ with device ID ...", registeredUserName];
+    [_messages replaceObjectAtIndex:STATUS_MESSAGE_REGISTRATION_USER_NAME withObject:_registrationUserName];
+
+    
+    // set device id message
+    _registrationVendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    [_messages replaceObjectAtIndex:STATUS_MESSAGE_REGISTRATION_VENDOR_ID withObject:_registrationVendorId];
+
     return self;
 }
 
