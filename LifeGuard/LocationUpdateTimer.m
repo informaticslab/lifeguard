@@ -113,10 +113,9 @@ AppManager *appMgr;
         [self startLocationUpdateTimer];
     }
     
-    NSDate *now = [[NSDate alloc] init];
     
     // line for logging when using this AppDelegate location manager
-    DebugLog(@"fired at %@, lat/long = %f,%f", now, lat, lng);
+    DebugLog(@"fired at %@, lat/long = %f,%f", [[NSDate alloc] init], lat, lng);
     
      
     [self.lifeguardService sendLocation:location];

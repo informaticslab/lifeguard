@@ -103,7 +103,7 @@ AppManager *appMgr;
     // create session with Lifeguard URL and session defaults
     NSDate *now = [[NSDate alloc] init];
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-    NSString *urlWithParams = [NSString stringWithFormat:@"%@?uid=%@p=%@&t=%.0f&lat=%f&long=%f",
+    NSString *urlWithParams = [NSString stringWithFormat:@"%@?uid=%@&p=%@&t=%.0f&lat=%f&long=%f",
                                [self getRegistrationServiceUrl], uid, vendorId, floor([now timeIntervalSince1970]),
                                latitude, longitude];
     
