@@ -59,7 +59,7 @@ AppManager *appMgr;
         return [NSString stringWithFormat:@"%@/register", serverUrl];
     
     else
-        return [NSString stringWithFormat:@"%@/lgregister   .aspx", serverUrl];
+        return [NSString stringWithFormat:@"%@/lgregister.aspx", serverUrl];
     
 }
 
